@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-04-18T21:12:14 IST" name="Default suite" finished-at="2023-04-18T21:14:10 IST" duration-ms="115213">
+  <suite started-at="2023-04-24T14:48:24 IST" name="Default suite" finished-at="2023-04-24T14:49:22 IST" duration-ms="57512">
     <groups>
     </groups>
-    <test started-at="2023-04-18T21:12:14 IST" name="Default test" finished-at="2023-04-18T21:14:10 IST" duration-ms="115213">
-      <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@6e0f5f7f]" started-at="2023-04-18T21:12:15 IST" name="setUp" finished-at="2023-04-18T21:12:41 IST" duration-ms="26513" status="PASS">
+    <test started-at="2023-04-24T14:48:24 IST" name="Default test" finished-at="2023-04-24T14:49:22 IST" duration-ms="57512">
+      <class name="com.bellesboard.qa.testcases.UserProfileTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.UserProfileTest@d9345cd]" started-at="2023-04-24T14:48:24 IST" name="setUp" finished-at="2023-04-24T14:49:02 IST" duration-ms="37390" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="forgotPassPage()[pri:1, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@6e0f5f7f]" started-at="2023-04-18T21:12:41 IST" name="forgotPassPage" finished-at="2023-04-18T21:12:47 IST" duration-ms="5723" status="PASS">
+        <test-method signature="userProfilePage()[pri:0, instance:com.bellesboard.qa.testcases.UserProfileTest@d9345cd]" started-at="2023-04-24T14:49:02 IST" name="userProfilePage" finished-at="2023-04-24T14:49:19 IST" duration-ms="17455" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- forgotPassPage -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@6e0f5f7f]" started-at="2023-04-18T21:12:47 IST" name="tearDown" finished-at="2023-04-18T21:12:50 IST" duration-ms="2535" status="PASS">
+        </test-method> <!-- userProfilePage -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.bellesboard.qa.testcases.UserProfileTest@d9345cd]" started-at="2023-04-24T14:49:19 IST" name="afterTest" finished-at="2023-04-24T14:49:22 IST" duration-ms="2463" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@6e0f5f7f]" started-at="2023-04-18T21:12:50 IST" name="setUp" finished-at="2023-04-18T21:13:04 IST" duration-ms="14477" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="verifyEmail()[pri:2, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@6e0f5f7f]" started-at="2023-04-18T21:13:04 IST" name="verifyEmail" finished-at="2023-04-18T21:14:07 IST" duration-ms="62723" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyEmail -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@6e0f5f7f]" started-at="2023-04-18T21:14:07 IST" name="tearDown" finished-at="2023-04-18T21:14:10 IST" duration-ms="2795" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.bellesboard.qa.testcases.ForgotPassPageTest -->
+        </test-method> <!-- afterTest -->
+      </class> <!-- com.bellesboard.qa.testcases.UserProfileTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
