@@ -33,14 +33,20 @@ public class UserProfileTest extends TestBase{
 				} catch(InterruptedException ex) {
 				    Thread.currentThread().interrupt();
 				}
-			  Assert.assertEquals(driver.getTitle(), "Home Page");
-			  driver.findElement(By.partialLinkText("Testim")).isDisplayed();
-			  driver.findElement(By.partialLinkText("Testim")).click();		
+			  Assert.assertEquals(driver.getTitle(), "Home Page");//Assert home page title
+			  driver.findElement(By.partialLinkText("Testim")).isDisplayed();//Assert logged in user name
+			  driver.findElement(By.partialLinkText("Testim")).click();		//Click on user name link
 			  
-			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).isDisplayed();
-			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).click();
-			  driver.findElement(By.xpath("//h2[contains(text(),'Edit User')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Email Address')]")).isDisplayed();
+			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).isDisplayed(); //Assert Profile link 
+			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).click(); //Click on Profile link
+			  driver.findElement(By.xpath("//h2[contains(text(),'Edit User')]")).isDisplayed(); //Assert Edit User form 
+			  driver.findElement(By.xpath("//label[contains(text(),'Email Address')]")).isDisplayed(); //Assert Email Address field label
+			  //String text = driver.findElement(By.name("email")).getText();
+			  //assertTrue("The text doesn't contains the value", text.contains("value"));
+			  String aa = driver.findElement(By.xpath("//input[@name='email']")).getText();
+			  System.out.println(aa);
+			 // Assert.assertEquals("vikash2060t@gmail.com", driver.findElement(By.xpath("//input[@name='email']")).getText()); //Verify the email address of the logged in user
+			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Password')]")).isDisplayed();
 			  driver.findElement(By.xpath("//div/div/span/button/i")).isDisplayed();
 			  driver.findElement(By.xpath("//label[contains(text(),'First Name')]")).isDisplayed();
@@ -59,7 +65,8 @@ public class UserProfileTest extends TestBase{
 			  driver.findElement(By.xpath("//label[contains(text(),'Office Phone')]")).isDisplayed();
 			  driver.findElement(By.xpath("//label[contains(text(),'Mobile Phone')]")).isDisplayed();
 			  driver.findElement(By.xpath("//label[contains(text(),'Home Phone')]")).isDisplayed();
-			  driver.findElement(By.id("send")).isDisplayed();			  
+			  driver.findElement(By.id("send")).isDisplayed();	
+			  
 	  }
 	
 	 @AfterTest
