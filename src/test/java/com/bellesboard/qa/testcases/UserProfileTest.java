@@ -27,7 +27,7 @@ public class UserProfileTest extends TestBase{
 	
 		@Test
 	  public void userProfilePage() {
-			System.out.println("Verify user profile page");
+			System.out.println("Verify admin user profile page");
 			 try {
 				    Thread.sleep(5000);                 //1000 milliseconds is one second.
 				} catch(InterruptedException ex) {
@@ -43,29 +43,73 @@ public class UserProfileTest extends TestBase{
 			  driver.findElement(By.xpath("//label[contains(text(),'Email Address')]")).isDisplayed(); //Assert Email Address field label
 			  //String text = driver.findElement(By.name("email")).getText();
 			  //assertTrue("The text doesn't contains the value", text.contains("value"));
-			  String aa = driver.findElement(By.xpath("//input[@name='email']")).getText();
+			  String aa = driver.findElement(By.xpath("//*[@id=\'UpdateMyProfile\']/div[1]/div[1]/div[1]/input")).getAttribute("value");
 			  System.out.println(aa);
-			 // Assert.assertEquals("vikash2060t@gmail.com", driver.findElement(By.xpath("//input[@name='email']")).getText()); //Verify the email address of the logged in user
+			 
+			  Assert.assertEquals(aa, "vikash2060t@gmail.com"); //Verify the email address of the logged in user
 			  
-			  driver.findElement(By.xpath("//label[contains(text(),'Password')]")).isDisplayed();
-			  driver.findElement(By.xpath("//div/div/span/button/i")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'First Name')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Last Name')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Board Title')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Time Zone')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Birthday')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Profile Picture')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Mailing Address')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Organization/Company Name')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Mailing Address')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'City')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'State')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Zipcode')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Job Title')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Office Phone')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Mobile Phone')]")).isDisplayed();
-			  driver.findElement(By.xpath("//label[contains(text(),'Home Phone')]")).isDisplayed();
-			  driver.findElement(By.id("send")).isDisplayed();	
+			  driver.findElement(By.xpath("//label[contains(text(),'Password')]")).isDisplayed(); //Assert Password field
+			  String pp = driver.findElement(By.xpath("//*[@id=\"password\"]")).getAttribute("name");
+			  System.out.println(pp);
+			  Assert.assertEquals(pp, "password"); //Verify the Password text field of the logged in user
+			  
+			  driver.findElement(By.xpath("//div/div/span/button/i")).isDisplayed(); //Assert View/hide password field
+			  driver.findElement(By.xpath("//label[contains(text(),'First Name')]")).isDisplayed(); //Assert First Name
+			  String fname = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[1]/div[3]/input")).getAttribute("value");
+			  System.out.println(fname);
+			  Assert.assertEquals(fname, "Testim"); //Verify the First Name field of the logged in user
+			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Last Name')]")).isDisplayed(); //Assert Last Name
+			  
+			  String lname = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[1]/div[4]/input")).getAttribute("value");
+			  System.out.println(lname);
+			  Assert.assertEquals(lname, "Testing"); //Verify the Last Name field of the logged in user
+			  
+			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Board Title')]")).isDisplayed(); //Assert Board Title field
+			  String brdtitle = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[1]/div[5]/input")).getAttribute("value");
+			  System.out.println(brdtitle);
+			  Assert.assertEquals(brdtitle, ""); //Verify the Board title field of the logged in user
+			  
+			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Time Zone')]")).isDisplayed(); //Assert Time zone field
+			  String timezone = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[1]/div[6]/select")).getAttribute("name");
+			  System.out.println(timezone);
+			  Assert.assertEquals(timezone, "user_utc"); //Verify the Time zone value field of the logged in user
+			  			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Birthday')]")).isDisplayed(); //Assert Birthday field
+			  String birthdate = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[1]/div[7]/div[1]/div/input")).getAttribute("value");
+			  System.out.println(birthdate);
+			  Assert.assertEquals(birthdate, ""); //Verify the Birthday value field of the logged in user
+			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Profile Picture')]")).isDisplayed();//Assert Profile Picture field
+			  String profilePic = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[2]/div/img")).getAttribute("src");
+			  System.out.println(profilePic);
+			  Assert.assertEquals(profilePic, "https://app.bellesboard.com/org_files/circle1.png"); //Verify the Profile picture field of the logged in user
+			  
+			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Mailing Address')]")).isDisplayed(); //Assert Mailing Address field
+			  String mailingAdd = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[2]/select")).getAttribute("name");
+			  System.out.println(mailingAdd);
+			  Assert.assertEquals(mailingAdd, "company_home"); //Verify the Profile picture field of the logged in
+			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Organization/Company Name')]")).isDisplayed(); //Assert Organization/Company Name field
+			  String orgName = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[3]/input")).getAttribute("name");
+			  System.out.println(orgName);
+			  Assert.assertEquals(orgName, "company_name"); //Verify the Profile picture field of the logged in
+			  
+			  driver.findElement(By.xpath("//label[contains(text(),'Mailing Address')]")).isDisplayed();//Assert Mailing Address field
+			  driver.findElement(By.xpath("//label[contains(text(),'City')]")).isDisplayed();//Assert City field
+			  driver.findElement(By.xpath("//label[contains(text(),'State')]")).isDisplayed();//Assert State field
+			  driver.findElement(By.xpath("//label[contains(text(),'Zipcode')]")).isDisplayed();//Assert Zipcode field
+			  driver.findElement(By.xpath("//label[contains(text(),'Job Title')]")).isDisplayed();//Assert Job Title field
+			  driver.findElement(By.xpath("//label[contains(text(),'Office Phone')]")).isDisplayed();//Assert Office Phone field
+			  driver.findElement(By.xpath("//label[contains(text(),'Mobile Phone')]")).isDisplayed();//Assert Mobile phone field
+			  driver.findElement(By.xpath("//label[contains(text(),'Home Phone')]")).isDisplayed();//Assert Home Phone field
+			  driver.findElement(By.id("send")).isDisplayed();	//Assert Update button
+			  
+			  driver.findElement(By.partialLinkText("Testim")).click();		//Click on user name link
+			  driver.findElement(By.xpath("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[3]/nav/ul/li/ul/li[10]/a")).click();
 			  
 	  }
 	

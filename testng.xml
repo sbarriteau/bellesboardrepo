@@ -31,4 +31,10 @@
 	</classes>
 	</test>
 	
+	<test name="Org_Profile" enabled ="true">
+	<classes>
+		<class name="com.bellesboard.qa.testcases.OrgProfileTest"/>
+	</classes>
+	</test>
+	
 </suite>
