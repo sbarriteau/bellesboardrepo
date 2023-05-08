@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
@@ -36,11 +37,9 @@ public class CreateUserTest extends TestBase{
 	  public void createUserPage() {
 		  System.out.println("Login to home Page to create new user");
 
-		  try {
-			    Thread.sleep(5000);                 //1000 milliseconds is one second.
-			} catch(InterruptedException ex) {
-			    Thread.currentThread().interrupt();
-			}
+		  //Wait for Login
+		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
+			
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
 		  driver.findElement(By.partialLinkText("Testim")).isDisplayed();
 		  driver.findElement(By.partialLinkText("Testim")).click();		  
@@ -64,9 +63,10 @@ public class CreateUserTest extends TestBase{
 		  WebElement sendWelcomeEmail = driver.findElement(By.name("send_welcome"));
 		  Select sendWelcom = new Select(sendWelcomeEmail);		  
 		  sendWelcom.selectByValue("1");
-		  String usrname = RandomStringPwd();
-		  		  
-		  driver.findElement(By.name("email")).sendKeys("rahul" + usrname +"@mailcatch.com");
+		  String usrname = "rahul5@mailcatch.com";
+		  System.out.println("New User: "+usrname);		  
+		  
+		  driver.findElement(By.name("email")).sendKeys(usrname);
 		  driver.findElement(By.name("firstname")).sendKeys("Rahul");
 		  driver.findElement(By.name("lastname")).sendKeys("Kumar");
 		  driver.findElement(By.name("title")).sendKeys("Mr.");
@@ -90,14 +90,12 @@ public class CreateUserTest extends TestBase{
 		  
 		  driver.findElement(By.partialLinkText("Testim")).click();	
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
+		  
 	  }
-	
-	 
-
-  @AfterTest
-  public void afterTest() {
-	  driver.quit();
-  }
-  
+	  
+	  @AfterMethod
+	  public void closeBrowser() {
+		  tearDown();
+	  }
 
 }

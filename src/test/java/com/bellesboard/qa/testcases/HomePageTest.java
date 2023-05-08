@@ -18,6 +18,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
@@ -42,11 +43,9 @@ public class HomePageTest extends TestBase{
 	  public void homePage() {
 		  System.out.println("Home Page Test");		  
 		
-		  try {
-			    Thread.sleep(5000);                 //1000 milliseconds is one second.
-			} catch(InterruptedException ex) {
-			    Thread.currentThread().interrupt();
-			}
+		  //Wait for Login
+		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
+		  
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
 		  driver.findElement(By.partialLinkText("Testim")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Home')]")).isDisplayed();
@@ -68,9 +67,9 @@ public class HomePageTest extends TestBase{
 	  }
 	  
 	  
-	  @AfterTest
-	  public void tearDown() {
-			driver.quit();
-		}
+	  @AfterMethod
+	  public void closeBrowser() {
+		  tearDown();
+	  }
 
 }

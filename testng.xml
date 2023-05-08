@@ -12,6 +12,12 @@
 		<class name="com.bellesboard.qa.testcases.HomePageTest"/>
 	</classes>
 	</test>
+		
+	<test name="Create_New_User" enabled ="true">
+	<classes>
+		<class name="com.bellesboard.qa.testcases.CreateUserTest"/>
+	</classes>
+	</test>
 	
 	<test name="TestCase_Forgot_Password" enabled ="true">
 	<classes>
@@ -19,9 +25,15 @@
 	</classes>
 	</test>
 	
-	<test name="Create_New_User" enabled ="true">
+	<test name="Manage_User" enabled ="true">
 	<classes>
-		<class name="com.bellesboard.qa.testcases.CreateUserTest"/>
+		<class name="com.bellesboard.qa.testcases.ManageNewUserTest"/>
+	</classes>
+	</test>
+	
+	<test name="TestCase_Delete_User" enabled ="true">
+	<classes>
+		<class name="com.bellesboard.qa.testcases.DeleteUserTest"/>
 	</classes>
 	</test>
 	
