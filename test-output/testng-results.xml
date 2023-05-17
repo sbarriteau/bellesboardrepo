@@ -1,51 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="12" passed="10" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-05-06T18:28:21 IST" name="Default suite" finished-at="2023-05-06T18:30:20 IST" duration-ms="118556">
+  <suite started-at="2023-05-13T11:46:21 IST" name="Suite" finished-at="2023-05-13T11:49:41 IST" duration-ms="200785">
     <groups>
     </groups>
-    <test started-at="2023-05-06T18:28:21 IST" name="Default test" finished-at="2023-05-06T18:30:20 IST" duration-ms="118556">
-      <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@2ea41516]" started-at="2023-05-06T18:28:21 IST" name="setUp" finished-at="2023-05-06T18:28:28 IST" duration-ms="6855" status="PASS">
+    <test started-at="2023-05-13T11:46:21 IST" name="TestCase_User_Login" finished-at="2023-05-13T11:46:41 IST" duration-ms="19832">
+      <class name="com.bellesboard.qa.testcases.LoginPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.LoginPageTest@485966cc]" started-at="2023-05-13T11:46:21 IST" name="setUp" finished-at="2023-05-13T11:46:28 IST" duration-ms="6920" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="forgotPassPage()[pri:1, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@2ea41516]" started-at="2023-05-06T18:28:28 IST" name="forgotPassPage" finished-at="2023-05-06T18:28:28 IST" duration-ms="481" status="PASS">
+        <test-method signature="LoginPageTitleTest()[pri:0, instance:com.bellesboard.qa.testcases.LoginPageTest@485966cc]" started-at="2023-05-13T11:46:28 IST" name="LoginPageTitleTest" finished-at="2023-05-13T11:46:28 IST" duration-ms="23" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- forgotPassPage -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@2ea41516]" started-at="2023-05-06T18:28:28 IST" name="closeBrowser" finished-at="2023-05-06T18:28:29 IST" duration-ms="493" status="PASS">
+        </test-method> <!-- LoginPageTitleTest -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.LoginPageTest@485966cc]" started-at="2023-05-13T11:46:28 IST" name="closeBrowser" finished-at="2023-05-13T11:46:28 IST" duration-ms="342" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@2ea41516]" started-at="2023-05-06T18:28:29 IST" name="setUp" finished-at="2023-05-06T18:28:35 IST" duration-ms="5992" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.LoginPageTest@485966cc]" started-at="2023-05-13T11:46:28 IST" name="setUp" finished-at="2023-05-13T11:46:34 IST" duration-ms="5953" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyEmail()[pri:2, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@2ea41516]" started-at="2023-05-06T18:28:35 IST" name="verifyEmail" finished-at="2023-05-06T18:30:19 IST" duration-ms="104425" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchElementException">
+        <test-method signature="LoginTest()[pri:0, instance:com.bellesboard.qa.testcases.LoginPageTest@485966cc]" started-at="2023-05-13T11:46:34 IST" name="LoginTest" finished-at="2023-05-13T11:46:40 IST" duration-ms="6397" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.LoginPageTest@485966cc]" started-at="2023-05-13T11:46:40 IST" name="closeBrowser" finished-at="2023-05-13T11:46:40 IST" duration-ms="127" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.LoginPageTest -->
+    </test> <!-- TestCase_User_Login -->
+    <test started-at="2023-05-13T11:46:41 IST" name="TestCase_Home_Page" finished-at="2023-05-13T11:46:53 IST" duration-ms="12786">
+      <class name="com.bellesboard.qa.testcases.HomePageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.HomePageTest@1a6d8329]" started-at="2023-05-13T11:46:41 IST" name="setUp" finished-at="2023-05-13T11:46:49 IST" duration-ms="8750" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="homePage()[pri:0, instance:com.bellesboard.qa.testcases.HomePageTest@1a6d8329]" started-at="2023-05-13T11:46:49 IST" name="homePage" finished-at="2023-05-13T11:46:53 IST" duration-ms="3868" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.HomePageTest@1a6d8329]" started-at="2023-05-13T11:46:53 IST" name="closeBrowser" finished-at="2023-05-13T11:46:53 IST" duration-ms="165" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.HomePageTest -->
+    </test> <!-- TestCase_Home_Page -->
+    <test started-at="2023-05-13T11:46:53 IST" name="Create_New_User" finished-at="2023-05-13T11:47:10 IST" duration-ms="16952">
+      <class name="com.bellesboard.qa.testcases.CreateUserTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.CreateUserTest@3c77d488]" started-at="2023-05-13T11:46:53 IST" name="setUp" finished-at="2023-05-13T11:47:01 IST" duration-ms="7569" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="createUserPage()[pri:1, instance:com.bellesboard.qa.testcases.CreateUserTest@3c77d488]" started-at="2023-05-13T11:47:01 IST" name="createUserPage" finished-at="2023-05-13T11:47:10 IST" duration-ms="9155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserPage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.CreateUserTest@3c77d488]" started-at="2023-05-13T11:47:10 IST" name="closeBrowser" finished-at="2023-05-13T11:47:10 IST" duration-ms="222" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.CreateUserTest -->
+    </test> <!-- Create_New_User -->
+    <test started-at="2023-05-13T11:47:10 IST" name="TestCase_Forgot_Password" finished-at="2023-05-13T11:48:17 IST" duration-ms="66266">
+      <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3e27aa33]" started-at="2023-05-13T11:47:10 IST" name="setUp" finished-at="2023-05-13T11:47:14 IST" duration-ms="3971" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="forgotPassPage()[pri:1, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3e27aa33]" started-at="2023-05-13T11:47:14 IST" name="forgotPassPage" finished-at="2023-05-13T11:47:17 IST" duration-ms="2611" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- forgotPassPage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3e27aa33]" started-at="2023-05-13T11:47:17 IST" name="closeBrowser" finished-at="2023-05-13T11:47:17 IST" duration-ms="217" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3e27aa33]" started-at="2023-05-13T11:47:17 IST" name="setUp" finished-at="2023-05-13T11:47:23 IST" duration-ms="5897" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="verifyEmail()[pri:2, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3e27aa33]" started-at="2023-05-13T11:47:23 IST" name="verifyEmail" finished-at="2023-05-13T11:48:16 IST" duration-ms="53398" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="mailboxform"]/input[1]"}
-  (Session info: chrome=113.0.5672.63)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.63, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Program Files (x86)\scop...}, goog:chromeOptions: {debuggerAddress: localhost:55458}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d1f78c7ec30af4d33f6a53db144b258a
-*** Element info: {Using=xpath, value=//*[@id="mailboxform"]/input[1]}]]>
+              <![CDATA[Expected condition failed: waiting for presence of element located by: By.xpath: //a[contains(text(),'BellesBoard - Password Reset')] (tried for 30 second(s) with 500 milliseconds interval)]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="mailboxform"]/input[1]"}
-  (Session info: chrome=113.0.5672.63)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //a[contains(text(),'BellesBoard - Password Reset')] (tried for 30 second(s) with 500 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+at com.bellesboard.qa.base.TestBase.explicitWaitForElement(TestBase.java:95)
+at com.bellesboard.qa.testcases.ForgotPassPageTest.verifyEmail(ForgotPassPageTest.java:68)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
+at org.testng.SuiteRunner.run(SuiteRunner.java:330)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+at org.testng.TestNG.runSuites(TestNG.java:1099)
+at org.testng.TestNG.run(TestNG.java:1067)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//a[contains(text(),'BellesBoard - Password Reset')]"}
+  (Session info: chrome=113.0.5672.93)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.63, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Program Files (x86)\scop...}, goog:chromeOptions: {debuggerAddress: localhost:55458}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d1f78c7ec30af4d33f6a53db144b258a
-*** Element info: {Using=xpath, value=//*[@id="mailboxform"]/input[1]}
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.93, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Program Files (x86)\scop...}, goog:chromeOptions: {debuggerAddress: localhost:52546}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8f32a30ab90c94b910a37cd254771bfb
+*** Element info: {Using=xpath, value=//a[contains(text(),'BellesBoard - Password Reset')]}
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -61,7 +146,77 @@ at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:3
 at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
 at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-at com.bellesboard.qa.testcases.ForgotPassPageTest.verifyEmail(ForgotPassPageTest.java:77)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:182)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:179)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+... 30 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyEmail -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3e27aa33]" started-at="2023-05-13T11:48:16 IST" name="closeBrowser" finished-at="2023-05-13T11:48:17 IST" duration-ms="165" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.ForgotPassPageTest -->
+    </test> <!-- TestCase_Forgot_Password -->
+    <test started-at="2023-05-13T11:48:17 IST" name="Manage_User" finished-at="2023-05-13T11:48:33 IST" duration-ms="16347">
+      <class name="com.bellesboard.qa.testcases.ManageNewUserTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ManageNewUserTest@f0c8a99]" started-at="2023-05-13T11:48:17 IST" name="setUp" finished-at="2023-05-13T11:48:25 IST" duration-ms="7925" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="createUserPage()[pri:1, instance:com.bellesboard.qa.testcases.ManageNewUserTest@f0c8a99]" started-at="2023-05-13T11:48:25 IST" name="createUserPage" finished-at="2023-05-13T11:48:33 IST" duration-ms="8248" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserPage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ManageNewUserTest@f0c8a99]" started-at="2023-05-13T11:48:33 IST" name="closeBrowser" finished-at="2023-05-13T11:48:33 IST" duration-ms="171" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.ManageNewUserTest -->
+    </test> <!-- Manage_User -->
+    <test started-at="2023-05-13T11:48:33 IST" name="TestCase_Delete_User" finished-at="2023-05-13T11:48:45 IST" duration-ms="12437">
+      <class name="com.bellesboard.qa.testcases.DeleteUserTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.DeleteUserTest@6d4d66d2]" started-at="2023-05-13T11:48:33 IST" name="setUp" finished-at="2023-05-13T11:48:41 IST" duration-ms="7615" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="createUserPage()[pri:1, instance:com.bellesboard.qa.testcases.DeleteUserTest@6d4d66d2]" started-at="2023-05-13T11:48:41 IST" name="createUserPage" finished-at="2023-05-13T11:48:45 IST" duration-ms="4514" status="FAIL">
+          <exception class="org.openqa.selenium.NoAlertPresentException">
+            <message>
+              <![CDATA[no such alert
+  (Session info: chrome=113.0.5672.93)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.93, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Program Files (x86)\scop...}, goog:chromeOptions: {debuggerAddress: localhost:52651}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5e167e595c10db153f589d27008d4c00]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoAlertPresentException: no such alert
+  (Session info: chrome=113.0.5672.93)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.5', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 113.0.5672.93, chrome: {chromedriverVersion: 113.0.5672.63 (0e1a4471d5ae..., userDataDir: C:\Program Files (x86)\scop...}, goog:chromeOptions: {debuggerAddress: localhost:52651}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5e167e595c10db153f589d27008d4c00
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.alert(RemoteWebDriver.java:932)
+at com.bellesboard.qa.testcases.DeleteUserTest.createUserPage(DeleteUserTest.java:61)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -92,15 +247,79 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          </exception> <!-- org.openqa.selenium.NoAlertPresentException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyEmail -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@2ea41516]" started-at="2023-05-06T18:30:19 IST" name="closeBrowser" finished-at="2023-05-06T18:30:20 IST" duration-ms="251" status="PASS">
+        </test-method> <!-- createUserPage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.DeleteUserTest@6d4d66d2]" started-at="2023-05-13T11:48:45 IST" name="closeBrowser" finished-at="2023-05-13T11:48:45 IST" duration-ms="302" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-      </class> <!-- com.bellesboard.qa.testcases.ForgotPassPageTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- com.bellesboard.qa.testcases.DeleteUserTest -->
+    </test> <!-- TestCase_Delete_User -->
+    <test started-at="2023-05-13T11:48:45 IST" name="User_Profile" finished-at="2023-05-13T11:48:59 IST" duration-ms="13678">
+      <class name="com.bellesboard.qa.testcases.UserProfileTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.UserProfileTest@53fe15ff]" started-at="2023-05-13T11:48:45 IST" name="setUp" finished-at="2023-05-13T11:48:54 IST" duration-ms="8167" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="userProfilePage()[pri:0, instance:com.bellesboard.qa.testcases.UserProfileTest@53fe15ff]" started-at="2023-05-13T11:48:54 IST" name="userProfilePage" finished-at="2023-05-13T11:48:59 IST" duration-ms="5326" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userProfilePage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.UserProfileTest@53fe15ff]" started-at="2023-05-13T11:48:59 IST" name="closeBrowser" finished-at="2023-05-13T11:48:59 IST" duration-ms="183" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.UserProfileTest -->
+    </test> <!-- User_Profile -->
+    <test started-at="2023-05-13T11:48:59 IST" name="Org_Profile" finished-at="2023-05-13T11:49:13 IST" duration-ms="13632">
+      <class name="com.bellesboard.qa.testcases.OrgProfileTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.OrgProfileTest@470734c3]" started-at="2023-05-13T11:48:59 IST" name="setUp" finished-at="2023-05-13T11:49:07 IST" duration-ms="7329" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="orgProfilePage()[pri:0, instance:com.bellesboard.qa.testcases.OrgProfileTest@470734c3]" started-at="2023-05-13T11:49:07 IST" name="orgProfilePage" finished-at="2023-05-13T11:49:13 IST" duration-ms="6117" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- orgProfilePage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.OrgProfileTest@470734c3]" started-at="2023-05-13T11:49:13 IST" name="closeBrowser" finished-at="2023-05-13T11:49:13 IST" duration-ms="182" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.OrgProfileTest -->
+    </test> <!-- Org_Profile -->
+    <test started-at="2023-05-13T11:49:13 IST" name="VerifyOrgInfoPageTest" finished-at="2023-05-13T11:49:27 IST" duration-ms="14365">
+      <class name="com.bellesboard.qa.testcases.VerifyOrgInfoPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.VerifyOrgInfoPageTest@74ea2410]" started-at="2023-05-13T11:49:13 IST" name="setUp" finished-at="2023-05-13T11:49:21 IST" duration-ms="8432" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="createUserPage()[pri:1, instance:com.bellesboard.qa.testcases.VerifyOrgInfoPageTest@74ea2410]" started-at="2023-05-13T11:49:21 IST" name="createUserPage" finished-at="2023-05-13T11:49:27 IST" duration-ms="5666" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserPage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.VerifyOrgInfoPageTest@74ea2410]" started-at="2023-05-13T11:49:27 IST" name="closeBrowser" finished-at="2023-05-13T11:49:27 IST" duration-ms="264" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.VerifyOrgInfoPageTest -->
+    </test> <!-- VerifyOrgInfoPageTest -->
+    <test started-at="2023-05-13T11:49:27 IST" name="OrgSettingsTest" finished-at="2023-05-13T11:49:41 IST" duration-ms="14261">
+      <class name="com.bellesboard.qa.testcases.OrgSettingsTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.OrgSettingsTest@5d0bf09b]" started-at="2023-05-13T11:49:27 IST" name="setUp" finished-at="2023-05-13T11:49:35 IST" duration-ms="8052" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="createUserPage()[pri:1, instance:com.bellesboard.qa.testcases.OrgSettingsTest@5d0bf09b]" started-at="2023-05-13T11:49:35 IST" name="createUserPage" finished-at="2023-05-13T11:49:41 IST" duration-ms="5910" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserPage -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.OrgSettingsTest@5d0bf09b]" started-at="2023-05-13T11:49:41 IST" name="closeBrowser" finished-at="2023-05-13T11:49:41 IST" duration-ms="296" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.bellesboard.qa.testcases.OrgSettingsTest -->
+    </test> <!-- OrgSettingsTest -->
+  </suite> <!-- Suite -->
 </testng-results>

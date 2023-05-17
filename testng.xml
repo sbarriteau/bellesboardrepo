@@ -49,4 +49,17 @@
 	</classes>
 	</test>
 	
+	<test name="VerifyOrgInfoPageTest" enabled ="true">
+	<classes>
+		<class name="com.bellesboard.qa.testcases.VerifyOrgInfoPageTest"/>
+	</classes>
+	</test>
+	
+	<test name="OrgSettingsTest" enabled ="true">
+	<classes>
+		<class name="com.bellesboard.qa.testcases.OrgSettingsTest"/>
+	</classes>
+	</test>
+	
+	
 </suite>
