@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.bellesboard.qa.testcases.OrgSettingsTest">
+      <class name="com.bellesboard.qa.testcases.Admin_CreateNewUserTest">
         <methods>
           <include name="closeBrowser"/>
-          <include name="createUserPage"/>
+          <include name="createAdminUserPage"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.bellesboard.qa.testcases.OrgSettingsTest -->
+      </class> <!-- com.bellesboard.qa.testcases.Admin_CreateNewUserTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

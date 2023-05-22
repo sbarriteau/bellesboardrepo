@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="TestCase_Forgot_Password(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
+      <class name="com.bellesboard.qa.testcases.Admin_CreateNewUserTest">
         <methods>
           <include name="closeBrowser"/>
+          <include name="createAdminUserPage"/>
           <include name="setUp"/>
-          <include name="verifyEmail"/>
         </methods>
-      </class> <!-- com.bellesboard.qa.testcases.ForgotPassPageTest -->
+      </class> <!-- com.bellesboard.qa.testcases.Admin_CreateNewUserTest -->
     </classes>
-  </test> <!-- TestCase_Forgot_Password(failed) -->
-  <test thread-count="5" name="TestCase_Delete_User(failed)">
-    <classes>
-      <class name="com.bellesboard.qa.testcases.DeleteUserTest">
-        <methods>
-          <include name="closeBrowser"/>
-          <include name="setUp"/>
-          <include name="createUserPage"/>
-        </methods>
-      </class> <!-- com.bellesboard.qa.testcases.DeleteUserTest -->
-    </classes>
-  </test> <!-- TestCase_Delete_User(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

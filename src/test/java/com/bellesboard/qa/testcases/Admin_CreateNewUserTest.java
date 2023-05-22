@@ -16,13 +16,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
-public class CreateUserTest extends TestBase{
+public class Admin_CreateNewUserTest extends TestBase{
   
 	LoginPage loginPage;
 	HomePage homePage;	
 	WebDriver wait;	
 	
-	public CreateUserTest() {
+	public Admin_CreateNewUserTest() {
 		super();
 	}
 	
@@ -34,7 +34,7 @@ public class CreateUserTest extends TestBase{
 	}
 			  	
 	  @Test(priority = 1)
-	  public void createUserPage() {
+	  public void createAdminUserPage() {
 		  System.out.println("Login to home Page to create new user");
 
 		  //Wait for Login
@@ -48,34 +48,37 @@ public class CreateUserTest extends TestBase{
 		  
 		  WebElement abilityToAccessSite = driver.findElement(By.name("siteaccess"));
 		  Select accessValue = new Select(abilityToAccessSite);		  
+		  accessValue.selectByValue("0");//Site access ability yes
 		  accessValue.selectByValue("1");//Site access ability yes
 		  
 		  WebElement orgAdmin = driver.findElement(By.name("Admin"));
 		  Select Admin = new Select(orgAdmin);		  
-		  Admin.selectByValue("2");//Admin permission
-		  
-		  driver.findElement(By.xpath("//label[1]/div/ins")).click();
-		  driver.findElement(By.xpath("//label[3]/div/ins")).click();
-		  driver.findElement(By.xpath("//label[5]/div/ins")).click();
-		  
-		  driver.findElement(By.xpath("//div[2]/div/label/div/ins")).click(); //Display Settings selection
-		  
+		  Admin.selectByValue("1");//Org Admin permission
+		  		  
 		  WebElement sendWelcomeEmail = driver.findElement(By.name("send_welcome"));
 		  Select sendWelcom = new Select(sendWelcomeEmail);		  
-		  sendWelcom.selectByValue("1");
-		  String usrname = "rahul5@mailcatch.com";
+		  sendWelcom.selectByValue("0");
+		  String usrname = "newadminuser@mailcatch.com";
 		  System.out.println("New User: "+usrname);		  
 		  
 		  driver.findElement(By.name("email")).sendKeys(usrname);
-		  driver.findElement(By.name("firstname")).sendKeys("Rahul");
-		  driver.findElement(By.name("lastname")).sendKeys("Kumar");
+		  driver.findElement(By.name("firstname")).sendKeys("New");
+		  driver.findElement(By.name("lastname")).sendKeys("Admin");
 		  driver.findElement(By.name("title")).sendKeys("Mr.");
 		  
 		  WebElement selectTimeZone = driver.findElement(By.name("user_utc"));
 		  Select selectTZone = new Select(selectTimeZone);		  
-		  selectTZone.selectByValue("-5");		  
+		  selectTZone.selectByValue("-5");		  //Select Timezone
 		  
-		  driver.findElement(By.name("birthday")).sendKeys("05/12/1983");
+		  driver.findElement(By.name("birthday")).sendKeys("05/12/1983");//Enter Birthday
+		  
+		  WebElement selectMailingAddress = driver.findElement(By.name("company_home"));
+		  Select selectMailingAdd = new Select(selectMailingAddress);		  
+		  selectMailingAdd.selectByValue("0"); //Select Mailing Address
+		  
+		  driver.findElement(By.name("office_phone")).sendKeys("+158585858"); //Enter Office Phone
+		  driver.findElement(By.name("mobile_phone")).sendKeys("+185858585"); //Enter Mobile phone
+		  driver.findElement(By.name("home_phone")).sendKeys("+188885555"); //Enter Home phone
 		  
 		  try {
 			     driver.findElement(By.id("send")).click();
@@ -84,9 +87,22 @@ public class CreateUserTest extends TestBase{
 			     executor.executeScript("arguments[0].click();", driver.findElement(By.id("send")));
 			  }
 		  
-		 // driver.findElement(By.id("send")).click();
-		 
-		 // driver.findElement(By.className("alert alert-success ProfileUpdated")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Testim")).click();	
+		  driver.findElement(By.xpath("//a[contains(text(),'Manage Users')]")).click();	//Click on Manage Users
+		  
+		  //Verify new admin user created
+String originalTitle = driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[1]/div[1]/div/div[1]/h2")).getText();
+		  
+		  String expectedTitle = "Organization Information";
+		  Assert.assertEquals(originalTitle, expectedTitle);
+		  driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0_filter\"]/label/input")).sendKeys("newadminuser@mailcatch.com");
+
+		  String searchedUser = driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[1]")).getText();
+		  
+		  String expSearchedUser = "New Admin";
+		  Assert.assertEquals(searchedUser, expSearchedUser);
+		  driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[9]/a/i")).click();
+		  
 		  
 		  driver.findElement(By.partialLinkText("Testim")).click();	
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();

@@ -61,5 +61,11 @@
 	</classes>
 	</test>
 	
+	<test name="AdminNewUserTest" enabled ="true">
+	<classes>
+		<class name="com.bellesboard.qa.testcases.Admin_CreateNewUserTest"/>
+	</classes>
+	</test>
+	
 	
 </suite>
