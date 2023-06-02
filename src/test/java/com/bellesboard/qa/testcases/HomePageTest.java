@@ -47,7 +47,7 @@ public class HomePageTest extends TestBase{
 		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 		  
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
-		  driver.findElement(By.partialLinkText("Testim")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Welcome")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Home')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Meetings & Events')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Calendar')]")).isDisplayed();
@@ -57,7 +57,7 @@ public class HomePageTest extends TestBase{
 		  driver.findElement(By.xpath("//a[contains(text(),'Committees')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Board Members')]")).isDisplayed();
 		  
-		  driver.findElement(By.partialLinkText("Testim")).click();
+		  driver.findElement(By.partialLinkText("Welcome")).click();
 		  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
 		  

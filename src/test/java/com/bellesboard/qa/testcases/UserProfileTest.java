@@ -33,8 +33,8 @@ public class UserProfileTest extends TestBase{
 			//Wait for Login
 			  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			  Assert.assertEquals(driver.getTitle(), "Home Page");//Assert home page title
-			  driver.findElement(By.partialLinkText("Testim")).isDisplayed();//Assert logged in user name
-			  driver.findElement(By.partialLinkText("Testim")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();//Assert logged in user name
+			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
 			  
 			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).isDisplayed(); //Assert Profile link 
 			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).click(); //Click on Profile link
@@ -45,7 +45,7 @@ public class UserProfileTest extends TestBase{
 			  String aa = driver.findElement(By.xpath("//*[@id=\'UpdateMyProfile\']/div[1]/div[1]/div[1]/input")).getAttribute("value");
 			 // System.out.println(aa);
 			 
-			  Assert.assertEquals(aa, "vikash2060t@gmail.com"); //Verify the email address of the logged in user
+			  Assert.assertEquals(aa, "vikashadmintest@mailcatch.com"); //Verify the email address of the logged in user
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Password')]")).isDisplayed(); //Assert Password field
 			  String pp = driver.findElement(By.xpath("//*[@id=\"password\"]")).getAttribute("name");
@@ -56,13 +56,13 @@ public class UserProfileTest extends TestBase{
 			  driver.findElement(By.xpath("//label[contains(text(),'First Name')]")).isDisplayed(); //Assert First Name
 			  String fname = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[1]/div[3]/input")).getAttribute("value");
 			 // System.out.println(fname);
-			  Assert.assertEquals(fname, "Testim"); //Verify the First Name field of the logged in user
+			  Assert.assertEquals(fname, "Vik_First"); //Verify the First Name field of the logged in user
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Last Name')]")).isDisplayed(); //Assert Last Name
 			  
 			  String lname = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[1]/div[4]/input")).getAttribute("value");
 			  //System.out.println(lname);
-			  Assert.assertEquals(lname, "Testing"); //Verify the Last Name field of the logged in user
+			  Assert.assertEquals(lname, "Vik_last"); //Verify the Last Name field of the logged in user
 			  
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Board Title')]")).isDisplayed(); //Assert Board Title field
@@ -84,7 +84,7 @@ public class UserProfileTest extends TestBase{
 			  driver.findElement(By.xpath("//label[contains(text(),'Profile Picture')]")).isDisplayed();//Assert Profile Picture field
 			  String profilePic = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/div[2]/div/img")).getAttribute("src");
 			  //System.out.println(profilePic);
-			  Assert.assertEquals(profilePic, "https://app.bellesboard.com/org_files/circle1.png"); //Verify the Profile picture field of the logged in user
+			  Assert.assertEquals(profilePic, "https://staging.bellesboard.com/org_files/circle1.png"); //Verify the Profile picture field of the logged in user
 			  
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Mailing Address')]")).isDisplayed(); //Assert Mailing Address field
@@ -107,7 +107,7 @@ public class UserProfileTest extends TestBase{
 			  driver.findElement(By.xpath("//label[contains(text(),'Home Phone')]")).isDisplayed();//Assert Home Phone field
 			  driver.findElement(By.id("send")).isDisplayed();	//Assert Update button
 			  
-			  driver.findElement(By.partialLinkText("Testim")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
 			  driver.findElement(By.xpath("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[3]/nav/ul/li/ul/li[10]/a")).click();
 			  
 	  }

@@ -21,7 +21,8 @@ public class Admin_CreateNewUserTest extends TestBase{
 	LoginPage loginPage;
 	HomePage homePage;	
 	WebDriver wait;	
-	
+	String usrname = "testnewadminuser@mailcatch.com";
+	String adminPass = "Tester@1234";
 	public Admin_CreateNewUserTest() {
 		super();
 	}
@@ -41,8 +42,8 @@ public class Admin_CreateNewUserTest extends TestBase{
 		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
-		  driver.findElement(By.partialLinkText("Testim")).isDisplayed();
-		  driver.findElement(By.partialLinkText("Testim")).click();		  
+		  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Vik_First")).click();		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Create User')]")).click();
 		  
@@ -58,7 +59,7 @@ public class Admin_CreateNewUserTest extends TestBase{
 		  WebElement sendWelcomeEmail = driver.findElement(By.name("send_welcome"));
 		  Select sendWelcom = new Select(sendWelcomeEmail);		  
 		  sendWelcom.selectByValue("0");
-		  String usrname = "newadminuser@mailcatch.com";
+		  //String usrname = "newadminuser@mailcatch.com";
 		  System.out.println("New User: "+usrname);		  
 		  
 		  driver.findElement(By.name("email")).sendKeys(usrname);
@@ -87,27 +88,71 @@ public class Admin_CreateNewUserTest extends TestBase{
 			     executor.executeScript("arguments[0].click();", driver.findElement(By.id("send")));
 			  }
 		  
-		  driver.findElement(By.partialLinkText("Testim")).click();	
+		  driver.findElement(By.partialLinkText("Vik_First")).click();	
+		
+		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
+		  
+	  }
+	  
+	  @Test(priority = 2)
+	  public void changeAdminUserPass() {
+		  System.out.println("Login to change admin user password");
+
+		  //Wait for Login
+		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
+			
+		  Assert.assertEquals(driver.getTitle(), "Home Page");
+		  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Vik_First")).click();		  
+		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
+		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Manage Users')]")).click();	//Click on Manage Users
 		  
 		  //Verify new admin user created
-String originalTitle = driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[1]/div[1]/div/div[1]/h2")).getText();
+		  String originalTitle = driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[1]/div[1]/div/div[1]/h2")).getText();
 		  
 		  String expectedTitle = "Organization Information";
 		  Assert.assertEquals(originalTitle, expectedTitle);
 		  driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0_filter\"]/label/input")).sendKeys("newadminuser@mailcatch.com");
 
-		  String searchedUser = driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[1]")).getText();
-		  
-		  String expSearchedUser = "New Admin";
+		  String searchedUser = driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[3]")).getText();
+		  													
+		  String expSearchedUser = usrname;
 		  Assert.assertEquals(searchedUser, expSearchedUser);
 		  driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[9]/a/i")).click();
+		  //Assert page elements
+		  String editUsr = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[2]/div/div[1]/h2")).getText();		  
+		  String editUser = "Edit User";
+		  Assert.assertEquals(editUsr, editUser);
 		  
+		 /* Select select = new Select(someElement);
+		  String option = select.getFirstSelectedOption().getText();
+		  Assert.assertEquals("Alabama", option); */
 		  
-		  driver.findElement(By.partialLinkText("Testim")).click();	
+		  //Assert user email
+		  String email = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[5]/div[1]/div[1]/input")).getAttribute("value");
+		  Assert.assertEquals(usrname, email);
+		  System.out.println("Useremail: "+email);
+		  
+		  //Enter new password
+		  driver.findElement(By.name("password")).sendKeys(adminPass);
+		  
+		  //Click on Update Profile button
+		  try {
+			     driver.findElement(By.id("send")).click();
+			  } catch (Exception e) {
+			     JavascriptExecutor executor = (JavascriptExecutor) driver;
+			     executor.executeScript("arguments[0].click();", driver.findElement(By.id("send")));
+			  }
+		  
+		  driver.findElement(By.partialLinkText("Vik_First")).click();	
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
-		  
-	  }
+		}
+	   
+	  @Test(priority = 3)
+	  public void newAdminUserLogin() {			
+			loginPage.login(usrname, adminPass);
+		}
 	  
 	  @AfterMethod
 	  public void closeBrowser() {

@@ -33,8 +33,8 @@ public class OrgProfileTest extends TestBase{
 			  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			  
 			  Assert.assertEquals(driver.getTitle(), "Home Page");//Assert home page title
-			  driver.findElement(By.partialLinkText("Testim")).isDisplayed();//Assert logged in user name
-			  driver.findElement(By.partialLinkText("Testim")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();//Assert logged in user name
+			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
 			  
 			  driver.findElement(By.xpath("//a[contains(text(),'Organization Profile')]")).isDisplayed(); //Assert Profile link 
 			  driver.findElement(By.xpath("//a[contains(text(),'Organization Profile')]")).click(); //Click on Profile link
@@ -44,18 +44,18 @@ public class OrgProfileTest extends TestBase{
 			  String aa = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[1]/input")).getAttribute("value");
 			  //System.out.println(aa);
 			 
-			  Assert.assertEquals(aa, "Advocates for Older Adults"); //Verify the email address of the logged in user
+			  Assert.assertEquals(aa, "The Bees Foundation"); //Verify the email address of the logged in user
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization Address')]")).isDisplayed(); //Assert Password field
 			  String orgAdd = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[2]/input")).getAttribute("value");
 			  //System.out.println(orgAdd);
-			  Assert.assertEquals(orgAdd, "164 Colombo Blvd"); //Verify the Password text field of the logged in user
+			  Assert.assertEquals(orgAdd, "60 N Baldwin Place"); //Verify the Password text field of the logged in user
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization City')]")).isDisplayed(); //Assert View/hide password field
 			  			  
 			  String orgCity = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[3]/div/div[1]/input")).getAttribute("value");
 			  //System.out.println(orgCity);
-			  Assert.assertEquals(orgCity, "Bethpage"); //Verify the First Name field of the logged in user
+			  Assert.assertEquals(orgCity, "Massapequa"); //Verify the First Name field of the logged in user
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization State')]")).isDisplayed(); //Assert Last Name
 			  
@@ -67,23 +67,23 @@ public class OrgProfileTest extends TestBase{
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization Zipcode')]")).isDisplayed(); //Assert Board Title field
 			  String orgZip = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[3]/div/div[3]/input")).getAttribute("value");
 			  //System.out.println(orgZip);
-			  Assert.assertEquals(orgZip, "11584"); //Verify the Board title field of the logged in user
+			  Assert.assertEquals(orgZip, "11758"); //Verify the Board title field of the logged in user
 			  
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization Phone Number')]")).isDisplayed(); //Assert Time zone field
 			  String orgPh = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[4]/input")).getAttribute("value");
 			  //System.out.println(orgPh);
-			  Assert.assertEquals(orgPh, "516-886-7250"); //Verify the Time zone value field of the logged in user
+			  Assert.assertEquals(orgPh, "516-557-7117"); //Verify the Time zone value field of the logged in user
 			  			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization Fax Number')]")).isDisplayed(); //Assert Birthday field
 			  String orgFax = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[5]/input")).getAttribute("value");
 			 // System.out.println(orgFax);
-			  Assert.assertEquals(orgFax, "516-886-7251"); //Verify the Birthday value field of the logged in user
+			  Assert.assertEquals(orgFax, ""); //Verify the Birthday value field of the logged in user
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization Website')]")).isDisplayed();//Assert Profile Picture field
 			  String orgWebsite = driver.findElement(By.xpath("//*[@id=\"UpdateMyProfile\"]/div[6]/input")).getAttribute("value");
 			  //System.out.println(orgWebsite);
-			  Assert.assertEquals(orgWebsite, "www.AdvocatesForOlderAdults.org"); //Verify the Profile picture field of the logged in user
+			  Assert.assertEquals(orgWebsite, "http://www.thebeesfakefoundation.org"); //Verify the Profile picture field of the logged in user
 			  
 			  
 			  driver.findElement(By.xpath("//label[contains(text(),'Organization Time Zone')]")).isDisplayed(); //Assert Mailing Address field
@@ -136,7 +136,7 @@ public class OrgProfileTest extends TestBase{
 			  
 			  driver.findElement(By.name("Update_Profile")).isDisplayed();	//Assert Update button
 			  
-			  driver.findElement(By.partialLinkText("Testim")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
 			  driver.findElement(By.xpath("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[3]/nav/ul/li/ul/li[10]/a")).click();
 			  
 	  }

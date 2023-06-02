@@ -1,5 +1,6 @@
 package com.bellesboard.qa.testcases;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -36,6 +37,8 @@ public class LoginPageTest extends TestBase{
 			} catch(InterruptedException ex) {
 			    Thread.currentThread().interrupt();
 			}
+		 
+		 driver.findElement(By.partialLinkText("Welcome")).isDisplayed();
 	}
 	
 	@AfterMethod

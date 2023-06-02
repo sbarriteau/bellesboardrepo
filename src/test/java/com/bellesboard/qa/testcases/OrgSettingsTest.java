@@ -35,8 +35,8 @@ public class OrgSettingsTest extends TestBase {
 		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
-		  driver.findElement(By.partialLinkText("Testim")).isDisplayed();
-		  driver.findElement(By.partialLinkText("Testim")).click();		  
+		  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Vik_First")).click();		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Organization Settings')]")).click();//Click on Organization Information link
 		  driver.findElement(By.xpath("//h1[contains(text(),'Organization Settings')]")).isDisplayed();
@@ -71,7 +71,7 @@ public class OrgSettingsTest extends TestBase {
 		  
 		  driver.findElement(By.xpath("//div/button[contains(text(),'Update Settings')]")).isDisplayed(); //Assert Update Settings button
 		  
-		  driver.findElement(By.partialLinkText("Testim")).click();	
+		  driver.findElement(By.partialLinkText("Vik_First")).click();	
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
   }
 	  
