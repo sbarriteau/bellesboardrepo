@@ -18,6 +18,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
+@Test(groups = {"smokeclass"})
 public class ForgotPassPageTest extends TestBase{
 	
 	LoginPage loginPage;
@@ -37,7 +38,7 @@ public class ForgotPassPageTest extends TestBase{
 	}
 		
 	  	
-	  @Test(groups = {"smoke"}, priority = 1)
+	  @Test(groups={"smoke"}, priority = 1)
 	  public void forgotPassPage() {
 		  System.out.println("Forgot Password Page Test");
 		
@@ -58,8 +59,8 @@ public class ForgotPassPageTest extends TestBase{
 			
 	  }
 	  
-	  @Test(groups = {"smoke"}, priority = 2)
-		public void CheckWelcomeMail() {
+	  @Test(groups={"smoke"}, priority = 2)
+		public void CheckReseteMail() {
 		  	driver.navigate().to("https://mail.google.com/");
 			//driver.get("https://accounts.google.com/signin");
 		      //identify email
@@ -78,18 +79,40 @@ public class ForgotPassPageTest extends TestBase{
 		      driver.findElement(By.xpath("//input[@name='q']")).sendKeys("BellesBoard - Password Reset");
 		      
 		      driver.findElement(By.cssSelector(".gb_Le > svg")).click();
-	  
-		      driver.findElement(By.xpath("//div[2]/span/span/span")).click();
-		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-		      String resetPassLink = driver.findElement(By.xpath("//td/p/a")).getAttribute("href");
+		      
+		      try {
+				    Thread.sleep(10000);                 //1000 milliseconds is one second.
+				} catch(InterruptedException ex) {
+				    Thread.currentThread().interrupt();
+				}
+		      
+			for (int i = 0; i<=10; i++)
+		      {
+				driver.findElement(By.cssSelector(".gb_Le > svg")).click();
+				String eml = driver.findElement(By.xpath("//*[@id=\":5k\"]")).getText();
+				  System.out.println(eml);
+				  //Assert.assertEquals(eml, "BellesBoard - Password Reset");
+				if(eml != null)
+				{
+					WebElement em = driver.findElement(By.xpath("//*[@id=\":5k\"]"));
+					em.click();
+					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				}
+				
+				
+			}
+		      String resetPassLink = driver.findElement(By.xpath("//div[@id=':ct']/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");
 				
 		      //String resetPasslink = driver.findElement(By.xpath("//*[@id=\":nr\"]/div[2]/div[1]/table/tbody/tr/td/p[3]")).getText();
 		      System.out.println("New Password link: "+resetPassLink);
 		      
-		      driver.findElement(By.xpath("//div[@id=':4']/div[3]/div/div/div[2]/div[3]/div")).click();
+		      //Click on Delete link
+		      WebElement el = driver.findElement(By.cssSelector(".T-I-JW > .asa"));
+		      el.click();
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
-		      driver.get(resetPassLink);
+		     
+		      driver.navigate().to(resetPassLink);
 	  }
 	  
 	  

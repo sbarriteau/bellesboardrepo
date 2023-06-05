@@ -6,8 +6,8 @@
       <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
         <methods>
           <include name="closeBrowser"/>
-          <include name="CheckWelcomeMail"/>
           <include name="setUp"/>
+          <include name="CheckReseteMail"/>
         </methods>
       </class> <!-- com.bellesboard.qa.testcases.ForgotPassPageTest -->
     </classes>

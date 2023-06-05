@@ -12,6 +12,7 @@ import com.bellesboard.qa.base.TestBase;
 import com.bellesboard.qa.pages.HomePage;
 import com.bellesboard.qa.pages.LoginPage;
 
+@Test(groups = {"smokeclass"})
 public class UserProfileTest extends TestBase{
  
 	LoginPage loginPage;
@@ -33,8 +34,8 @@ public class UserProfileTest extends TestBase{
 			//Wait for Login
 			  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			  Assert.assertEquals(driver.getTitle(), "Home Page");//Assert home page title
-			  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();//Assert logged in user name
-			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Welcome")).isDisplayed();//Assert logged in user name
+			  driver.findElement(By.partialLinkText("Welcome")).click();		//Click on user name link
 			  
 			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).isDisplayed(); //Assert Profile link 
 			  driver.findElement(By.xpath("//a[contains(text(),'Profile')]")).click(); //Click on Profile link
