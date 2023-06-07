@@ -61,45 +61,41 @@ public class ForgotPassPageTest extends TestBase{
 	  
 	  @Test(groups={"smoke"}, priority = 2)
 		public void CheckReseteMail() {
-		  	driver.navigate().to("https://mail.google.com/");
+		  	driver.navigate().to("https://mail.google.com/"); //Open gmail URL
 			//driver.get("https://accounts.google.com/signin");
 		      //identify email
 		      WebElement l = driver.findElement(By.name("identifier"));
-		      l.sendKeys(usrname);
+		      l.sendKeys(usrname); //Enter email address
 		      WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
-		      b.click();
+		      b.click(); //Click on Next button
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      //identify password
 		      WebElement p = driver.findElement(By.xpath("//input[@name='Passwd']"));
-		      p.sendKeys(pass);
+		      p.sendKeys(pass);//Enter Password
 		      
-		      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();
+		      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();//Click on Next button
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      
+		      //Search Password reset email by subject
 		      driver.findElement(By.xpath("//input[@name='q']")).sendKeys("BellesBoard - Password Reset");
 		      
-		      driver.findElement(By.cssSelector(".gb_Le > svg")).click();
-		      
-		      try {
-				    Thread.sleep(10000);                 //1000 milliseconds is one second.
-				} catch(InterruptedException ex) {
-				    Thread.currentThread().interrupt();
-				}
+		      //Click on Search button
+		      driver.findElement(By.cssSelector(".gb_Le > svg")).click();		     
 		      
 			for (int i = 0; i<=10; i++)
 		      {
-				driver.findElement(By.cssSelector(".gb_Le > svg")).click();
-				String eml = driver.findElement(By.xpath("//*[@id=\":5k\"]")).getText();
-				  System.out.println(eml);
-				  //Assert.assertEquals(eml, "BellesBoard - Password Reset");
+				 
+				//driver.findElement(By.cssSelector(".gb_Le > svg")).click();
+				String eml = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div[5]/div[1]/div/table/tbody/tr[1]/td[5]/div/div/div[2]/span/span")).getText();
+				  System.out.println("EMAL:"+eml);
+				//Assert.assertEquals(eml, "BellesBoard - Password Reset");
 				if(eml != null)
 				{
-					WebElement em = driver.findElement(By.xpath("//*[@id=\":5k\"]"));
-					em.click();
+					//*[@id=":6v"]/span
+					driver.findElement(By.xpath("//span[contains(text(),'BellesBoard - Password Reset')]")).click();
+					//driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div[5]/div[1]/div/table/tbody/tr[1]/td[5]/div/div/div[2]/span/span")).click();
 					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				}
-				
-				
+				}				
 			}
 		      String resetPassLink = driver.findElement(By.xpath("//div[@id=':ct']/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");
 				
