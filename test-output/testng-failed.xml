@@ -6,6 +6,7 @@
       <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
         <methods>
           <include name="closeBrowser"/>
+          <include name="checkLoginWithNewPassword"/>
           <include name="setUp"/>
           <include name="CheckReseteMail"/>
         </methods>
