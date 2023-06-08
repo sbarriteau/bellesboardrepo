@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,8 +40,10 @@ public class TestBase {
 	public static void initialization() {
 		String browserName = prop.getProperty("browser");
 		if(browserName.equals("chrome")) {
+			ChromeOptions co = new ChromeOptions();
+			co.addArguments("--remote-allow-origins=*");
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/main/java/drivers/chromedriver.exe");
-			driver = new ChromeDriver();			
+			driver = new ChromeDriver(co);			
 		} else if(browserName.equals("FF")) {
 			System.setProperty("webdriver.gecko.driver", "firefoxdriver");
 			driver = new FirefoxDriver();

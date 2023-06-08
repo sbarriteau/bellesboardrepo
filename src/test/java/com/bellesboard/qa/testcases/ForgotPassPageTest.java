@@ -6,10 +6,9 @@ import com.bellesboard.qa.base.TestBase;
 import com.bellesboard.qa.pages.HomePage;
 import com.bellesboard.qa.pages.LoginPage;
 import com.bellesboard.qa.util.TestUtil;
-
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -77,27 +76,16 @@ public class ForgotPassPageTest extends TestBase{
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      
 		      //Search Password reset email by subject
-		      driver.findElement(By.xpath("//input[@name='q']")).sendKeys("BellesBoard - Password Reset");
+		      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
+		      sub.sendKeys("BellesBoard - Password Reset");
 		      
 		      //Click on Search button
-		      driver.findElement(By.cssSelector(".gb_Le > svg")).click();		     
-		      
-			for (int i = 0; i<=10; i++)
-		      {
-				 
-				//driver.findElement(By.cssSelector(".gb_Le > svg")).click();
-				String eml = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div[5]/div[1]/div/table/tbody/tr[1]/td[5]/div/div/div[2]/span/span")).getText();
-				  System.out.println("EMAL:"+eml);
-				//Assert.assertEquals(eml, "BellesBoard - Password Reset");
-				if(eml != null)
-				{
-					//*[@id=":6v"]/span
-					driver.findElement(By.xpath("//span[contains(text(),'BellesBoard - Password Reset')]")).click();
-					//driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div[5]/div[1]/div/table/tbody/tr[1]/td[5]/div/div/div[2]/span/span")).click();
-					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				}				
-			}
-		      String resetPassLink = driver.findElement(By.xpath("//div[@id=':ct']/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");
+		      //driver.findElement(By.cssSelector(".gb_Le > svg")).click();
+		      sub.sendKeys(Keys.ENTER);
+		      WebElement eml = driver.findElement(By.xpath("//td[4]/div[2]/span/span"));
+				eml.click();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      String resetPassLink = driver.findElement(By.cssSelector("p:nth-child(5) > a")).getAttribute("href");
 				
 		      //String resetPasslink = driver.findElement(By.xpath("//*[@id=\":nr\"]/div[2]/div[1]/table/tbody/tr/td/p[3]")).getText();
 		      System.out.println("New Password link: "+resetPassLink);
