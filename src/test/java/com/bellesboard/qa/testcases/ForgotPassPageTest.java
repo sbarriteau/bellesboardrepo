@@ -7,6 +7,8 @@ import com.bellesboard.qa.pages.HomePage;
 import com.bellesboard.qa.pages.LoginPage;
 import com.bellesboard.qa.util.TestUtil;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -24,8 +26,7 @@ public class ForgotPassPageTest extends TestBase{
 	HomePage homePage;	
 	WebDriver wait;	
 	String[] arrSplit;
-	String usrname = "bellestest@gmail.com";
-	String pass = "Tester@1234";
+	String  pwd;
 	
 	public ForgotPassPageTest() {
 		super();
@@ -48,7 +49,7 @@ public class ForgotPassPageTest extends TestBase{
 		  driver.findElement(By.id("email1")).isDisplayed();
 		  driver.findElement(By.id("forgot_password_submit")).isDisplayed();
 		 
-		  driver.findElement(By.id("email1")).sendKeys(usrname);
+		  driver.findElement(By.id("email1")).sendKeys(prop.getProperty("NewUser"));
 		  driver.findElement(By.id("forgot_password_submit")).click();		  
 		  
 		  //Wait for Login
@@ -64,13 +65,13 @@ public class ForgotPassPageTest extends TestBase{
 			//driver.get("https://accounts.google.com/signin");
 		      //identify email
 		      WebElement l = driver.findElement(By.name("identifier"));
-		      l.sendKeys(usrname); //Enter email address
+		      l.sendKeys(prop.getProperty("NewUser")); //Enter email address
 		      WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
 		      b.click(); //Click on Next button
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      //identify password
 		      WebElement p = driver.findElement(By.xpath("//input[@name='Passwd']"));
-		      p.sendKeys(pass);//Enter Password
+		      p.sendKeys(prop.getProperty("gmailPass"));//Enter Password
 		      
 		      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();//Click on Next button
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -79,66 +80,47 @@ public class ForgotPassPageTest extends TestBase{
 		      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
 		      sub.sendKeys("BellesBoard - Password Reset");
 		      
-		      //Click on Search button
-		      //driver.findElement(By.cssSelector(".gb_Le > svg")).click();
+		      //Click on Search button		      
 		      sub.sendKeys(Keys.ENTER);
-		      WebElement eml = driver.findElement(By.xpath("//td[4]/div[2]/span/span"));
-				eml.click();
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      String resetPassLink = driver.findElement(By.cssSelector("p:nth-child(5) > a")).getAttribute("href");
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      String countEmail = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[2]")).getText();
+		      System.out.println("Number of email thread: "+countEmail);
+		    		      
+		      WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span"));
+		      eml.click();
+		      								
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);				
 				
-		      //String resetPasslink = driver.findElement(By.xpath("//*[@id=\":nr\"]/div[2]/div[1]/table/tbody/tr/td/p[3]")).getText();
-		      System.out.println("New Password link: "+resetPassLink);
-		      
-		      //Click on Delete link
-		      WebElement el = driver.findElement(By.cssSelector(".T-I-JW > .asa"));
-		      el.click();
+		      int cnt=Integer.parseInt(countEmail);  
+																																					//div[26]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a
+		      String resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");
+						      
+		      System.out.println("Reset Password link: "+resetPassLink);
+		      		      
+		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
-		     
-		      driver.navigate().to(resetPassLink);
+		    pwd = RandomStringPwd();
+		      
+		      //Enter new password
+		      driver.findElement(By.id("NewPassword")).isDisplayed();
+	      		driver.findElement(By.id("NewPassword")).sendKeys(pwd);
+	      		driver.findElement(By.id("NewPassword_submit")).click();
+	      		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);  		 
+		      
 	  }
 	  
-	  
-	  /*
-	  @Test(priority = 2)
-	  public void verifyEmail() {
-		  loginPage = new LoginPage();
-		  driver.get("http://mailcatch.com/en/disposable-email");
-		  driver.findElement(By.xpath("//*[@id=\"mailboxform\"]/input[1]")).sendKeys(usrname);
-		  driver.findElement(By.xpath("//*[@id=\"mailboxform\"]/input[2]")).click();
-		  
-		  //Wait for Login
-		  explicitWaitForElement("//a[contains(text(),'BellesBoard - Password Reset')]");
+	  @Test(groups={"smoke"}, priority = 3)
+	  public void checkLoginWithNewPassword() {
+				
+			loginPage = new LoginPage();
+			System.out.println("New Password: "+pwd);
+			loginPage.login(prop.getProperty("NewUser"), pwd);
 			
-		  driver.findElement(By.xpath("//a[contains(text(),'BellesBoard - Password Reset')]")).isDisplayed();
-		  driver.findElement(By.xpath("//a[contains(text(),'BellesBoard - Password Reset')]")).click();
-		 		  
-		  driver.switchTo().frame("emailframe");
-		 			  
-		  String resetPassLink = driver.findElement(By.partialLinkText("https://app.bellesboard.com/index.cfm?p=login&fpwd=")).getText();
-      		//System.out.println(resetPassLink);
-		  driver.findElement(By.xpath("//*[@id=\"mailboxform\"]/input[1]")).sendKeys(usrname);
-		  driver.findElement(By.xpath("//*[@id=\"mailboxform\"]/input[2]")).click();
-		  driver.findElement(By.xpath("//*[@id=\"mailsList\"]/table/tbody/tr[3]/td[3]/a/img")).click();
-		  
-      		driver.get(resetPassLink);
-      	      		
-      		String pass = RandomStringPwd();
-      		System.out.println("New Password: "+pass);
-      		
-      		driver.findElement(By.id("NewPassword")).isDisplayed();
-      		driver.findElement(By.id("NewPassword")).sendKeys(pass);
-      		driver.findElement(By.id("NewPassword_submit")).click();
-      		
-     		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-         		
-  		  loginPage.login(usrname, pass);
-  		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS); 		
-  		
-	  }
-	  	  
-	  	  */
+			System.out.println("User logged In with new Password Successfully!");
+		}
+	 	  	  
+	 
 	  @AfterMethod
 	  public void closeBrowser() {
 		  tearDown();

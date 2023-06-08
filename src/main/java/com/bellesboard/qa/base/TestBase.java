@@ -71,8 +71,9 @@ public class TestBase {
 	    }
 	
 	public static String RandomStringPwd() 
-    {
+    {		      
 		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?1234567890";
+		
 		String pwd = RandomStringUtils.random( 15, characters );
 		System.out.println( pwd );		
 		return pwd; 	                
