@@ -28,6 +28,9 @@ public class HomePageTest extends TestBase{
 	HomePage homePage;	
 	WebDriver wait;	
 	
+	
+	
+	
 	public HomePageTest() {
 		super();
 	}
