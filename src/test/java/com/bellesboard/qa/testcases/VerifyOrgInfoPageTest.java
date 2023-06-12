@@ -35,8 +35,8 @@ public class VerifyOrgInfoPageTest extends TestBase {
 		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
-		  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();
-		  driver.findElement(By.partialLinkText("Vik_First")).click();		  
+		  driver.findElement(By.partialLinkText("Welcome")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Welcome")).click();		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Organization Information')]")).click();//Click on Organization Information link
 		  driver.findElement(By.xpath("//h2[contains(text(),'Organization Information')]")).isDisplayed();
@@ -54,7 +54,7 @@ public class VerifyOrgInfoPageTest extends TestBase {
 		  driver.findElement(By.xpath("//a[contains(text(),'Export Board Members')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Export Comittees')]")).isDisplayed();
 		  
-		  driver.findElement(By.partialLinkText("Vik_First")).click();	
+		  driver.findElement(By.partialLinkText("Welcome")).click();	
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
   }
 	  

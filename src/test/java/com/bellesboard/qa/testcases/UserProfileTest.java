@@ -108,7 +108,7 @@ public class UserProfileTest extends TestBase{
 			  driver.findElement(By.xpath("//label[contains(text(),'Home Phone')]")).isDisplayed();//Assert Home Phone field
 			  driver.findElement(By.id("send")).isDisplayed();	//Assert Update button
 			  
-			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Welcome")).click();		//Click on user name link
 			  driver.findElement(By.xpath("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[3]/nav/ul/li/ul/li[10]/a")).click();
 			  
 	  }

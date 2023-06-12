@@ -33,8 +33,8 @@ public class OrgProfileTest extends TestBase{
 			  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			  
 			  Assert.assertEquals(driver.getTitle(), "Home Page");//Assert home page title
-			  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();//Assert logged in user name
-			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Welcome")).isDisplayed();//Assert logged in user name
+			  driver.findElement(By.partialLinkText("Welcome")).click();		//Click on user name link
 			  
 			  driver.findElement(By.xpath("//a[contains(text(),'Organization Profile')]")).isDisplayed(); //Assert Profile link 
 			  driver.findElement(By.xpath("//a[contains(text(),'Organization Profile')]")).click(); //Click on Profile link
@@ -136,7 +136,7 @@ public class OrgProfileTest extends TestBase{
 			  
 			  driver.findElement(By.name("Update_Profile")).isDisplayed();	//Assert Update button
 			  
-			  driver.findElement(By.partialLinkText("Vik_First")).click();		//Click on user name link
+			  driver.findElement(By.partialLinkText("Welcome")).click();		//Click on user name link
 			  driver.findElement(By.xpath("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[3]/nav/ul/li/ul/li[10]/a")).click();
 			  
 	  }

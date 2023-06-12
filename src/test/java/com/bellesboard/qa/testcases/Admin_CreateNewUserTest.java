@@ -42,8 +42,8 @@ public class Admin_CreateNewUserTest extends TestBase{
 		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
-		  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();
-		  driver.findElement(By.partialLinkText("Vik_First")).click();		  
+		  driver.findElement(By.partialLinkText("Welcome")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Welcome")).click();		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
 		  driver.findElement(By.xpath("//a[contains(text(),'Create User')]")).click();
 		  
@@ -88,7 +88,7 @@ public class Admin_CreateNewUserTest extends TestBase{
 			     executor.executeScript("arguments[0].click();", driver.findElement(By.id("send")));
 			  }
 		  
-		  driver.findElement(By.partialLinkText("Vik_First")).click();	
+		  driver.findElement(By.partialLinkText("Welcome")).click();	
 		
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
 		  
@@ -102,8 +102,8 @@ public class Admin_CreateNewUserTest extends TestBase{
 		  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 			
 		  Assert.assertEquals(driver.getTitle(), "Home Page");
-		  driver.findElement(By.partialLinkText("Vik_First")).isDisplayed();
-		  driver.findElement(By.partialLinkText("Vik_First")).click();		  
+		  driver.findElement(By.partialLinkText("Welcome")).isDisplayed();
+		  driver.findElement(By.partialLinkText("Welcome")).click();		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
 		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Manage Users')]")).click();	//Click on Manage Users
@@ -145,7 +145,7 @@ public class Admin_CreateNewUserTest extends TestBase{
 			     executor.executeScript("arguments[0].click();", driver.findElement(By.id("send")));
 			  }
 		  
-		  driver.findElement(By.partialLinkText("Vik_First")).click();	
+		  driver.findElement(By.partialLinkText("Welcome")).click();	
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
 		}
 	   
