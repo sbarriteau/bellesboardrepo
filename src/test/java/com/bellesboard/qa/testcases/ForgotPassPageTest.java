@@ -82,6 +82,13 @@ public class ForgotPassPageTest extends TestBase{
 		      
 		      //Click on Search button		      
 		      sub.sendKeys(Keys.ENTER);
+		      try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      String countEmail = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[2]")).getText();
 		      System.out.println("Number of email thread: "+countEmail);
