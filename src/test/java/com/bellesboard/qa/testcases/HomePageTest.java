@@ -26,10 +26,7 @@ public class HomePageTest extends TestBase{
 	
 	LoginPage loginPage;
 	HomePage homePage;	
-	WebDriver wait;	
-	
-	
-	
+	WebDriver wait;		
 	
 	public HomePageTest() {
 		super();
@@ -38,10 +35,9 @@ public class HomePageTest extends TestBase{
 	public void setUp() {
 		initialization();
 		loginPage = new LoginPage();	
-		loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		loginPage.login(prop.getProperty("adminTestUser"), prop.getProperty("password"));
 	}
-		
-	  	
+			  	
 	  @Test
 	  public void homePage() {
 		  System.out.println("Home Page Test");		  
