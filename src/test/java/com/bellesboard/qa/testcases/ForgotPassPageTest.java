@@ -115,7 +115,7 @@ public class ForgotPassPageTest extends TestBase{
 					     JavascriptExecutor executor = (JavascriptExecutor) driver;
 					     executor.executeScript("arguments[0].click();", eml);
 					  } 
-			      																																					
+			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);																																					
 			      resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");   		      
 			      
 		      }
