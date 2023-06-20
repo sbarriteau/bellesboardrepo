@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="1" failed="2" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-08T13:22:01 IST" name="Default suite" finished-at="2023-06-08T13:23:11 IST" duration-ms="69686">
+  <suite started-at="2023-06-20T17:48:56 IST" name="Default suite" finished-at="2023-06-20T17:50:11 IST" duration-ms="74886">
     <groups>
       <group name="smokeclass">
         <method signature="ForgotPassPageTest.forgotPassPage()[pri:1, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" name="forgotPassPage" class="com.bellesboard.qa.testcases.ForgotPassPageTest"/>
@@ -15,55 +15,55 @@
         <method signature="ForgotPassPageTest.checkLoginWithNewPassword()[pri:3, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" name="checkLoginWithNewPassword" class="com.bellesboard.qa.testcases.ForgotPassPageTest"/>
       </group> <!-- smoke -->
     </groups>
-    <test started-at="2023-06-08T13:22:01 IST" name="Default test" finished-at="2023-06-08T13:23:11 IST" duration-ms="69686">
+    <test started-at="2023-06-20T17:48:56 IST" name="Default test" finished-at="2023-06-20T17:50:11 IST" duration-ms="74886">
       <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:22:01 IST" name="setUp" finished-at="2023-06-08T13:22:25 IST" duration-ms="24353" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:48:56 IST" name="setUp" finished-at="2023-06-20T17:49:01 IST" duration-ms="5179" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="forgotPassPage()[pri:1, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:22:25 IST" name="forgotPassPage" finished-at="2023-06-08T13:22:27 IST" duration-ms="1253" status="PASS">
+        <test-method signature="forgotPassPage()[pri:1, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:49:01 IST" name="forgotPassPage" finished-at="2023-06-20T17:49:04 IST" duration-ms="2994" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- forgotPassPage -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:22:27 IST" name="closeBrowser" finished-at="2023-06-08T13:22:29 IST" duration-ms="2543" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:49:04 IST" name="closeBrowser" finished-at="2023-06-20T17:49:04 IST" duration-ms="235" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:22:29 IST" name="setUp" finished-at="2023-06-08T13:22:42 IST" duration-ms="12396" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:49:04 IST" name="setUp" finished-at="2023-06-20T17:49:09 IST" duration-ms="4545" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="CheckReseteMail()[pri:2, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:22:42 IST" name="CheckReseteMail" finished-at="2023-06-08T13:22:49 IST" duration-ms="7580" status="FAIL">
-          <exception class="org.openqa.selenium.ElementNotInteractableException">
+        <test-method signature="CheckReseteMail()[pri:2, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:49:09 IST" name="CheckReseteMail" finished-at="2023-06-20T17:49:57 IST" duration-ms="48171" status="FAIL">
+          <exception class="org.openqa.selenium.UnhandledAlertException">
             <message>
-              <![CDATA[Element <input class="whsOnd zHQkBf" name="Passwd" type="password"> is not reachable by keyboard
+              <![CDATA[unexpected alert open: {Alert text : }
+  (Session info: chrome=114.0.5735.134): {Alert text : 
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.7', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 113.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230522134052, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 13204, moz:profile: C:\Users\aniru\AppData\Loca..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: 0a340250-61ef-47a5-a481-0195879ced92]]>
+System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.4', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.134, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\WINDOWS\SystemTemp\scope...}, goog:chromeOptions: {debuggerAddress: localhost:57675}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c7a61fa14b12382eb51f58f00b8da09
+*** Element info: {Using=id, value=NewPassword}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementNotInteractableException: Element <input class="whsOnd zHQkBf" name="Passwd" type="password"> is not reachable by keyboard
+              <![CDATA[org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : }
+  (Session info: chrome=114.0.5735.134): {Alert text : 
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.7', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 113.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20230522134052, moz:geckodriverVersion: 0.33.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 13204, moz:profile: C:\Users\aniru\AppData\Loca..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: 0a340250-61ef-47a5-a481-0195879ced92
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+System info: host: 'OM-JAI-LAXMI-MA', ip: '192.168.1.4', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.134, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\WINDOWS\SystemTemp\scope...}, goog:chromeOptions: {debuggerAddress: localhost:57675}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c7a61fa14b12382eb51f58f00b8da09
+*** Element info: {Using=id, value=NewPassword}
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
 at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
 at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
-at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:106)
-at com.bellesboard.qa.testcases.ForgotPassPageTest.CheckReseteMail(ForgotPassPageTest.java:74)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+at org.openqa.selenium.By$ById.findElement(By.java:188)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at com.bellesboard.qa.testcases.ForgotPassPageTest.CheckReseteMail(ForgotPassPageTest.java:136)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -94,69 +94,23 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementNotInteractableException -->
+          </exception> <!-- org.openqa.selenium.UnhandledAlertException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckReseteMail -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:22:49 IST" name="closeBrowser" finished-at="2023-06-08T13:22:53 IST" duration-ms="3338" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:49:57 IST" name="closeBrowser" finished-at="2023-06-20T17:49:58 IST" duration-ms="1248" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:22:53 IST" name="setUp" finished-at="2023-06-08T13:23:08 IST" duration-ms="15005" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:49:58 IST" name="setUp" finished-at="2023-06-20T17:50:08 IST" duration-ms="9423" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="checkLoginWithNewPassword()[pri:3, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:23:08 IST" name="checkLoginWithNewPassword" finished-at="2023-06-08T13:23:08 IST" duration-ms="615" status="FAIL">
-          <exception class="java.lang.IllegalArgumentException">
-            <message>
-              <![CDATA[Keys to send should be a not null CharSequence]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
-at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:97)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-at jdk.proxy2/jdk.proxy2.$Proxy11.sendKeys(Unknown Source)
-at com.bellesboard.qa.pages.LoginPage.login(LoginPage.java:34)
-at com.bellesboard.qa.testcases.ForgotPassPageTest.checkLoginWithNewPassword(ForgotPassPageTest.java:118)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:829)
-at org.testng.TestRunner.run(TestRunner.java:602)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.IllegalArgumentException -->
+        <test-method signature="checkLoginWithNewPassword()[pri:3, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:50:08 IST" name="checkLoginWithNewPassword" finished-at="2023-06-20T17:50:10 IST" duration-ms="1788" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkLoginWithNewPassword -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-08T13:23:08 IST" name="closeBrowser" finished-at="2023-06-08T13:23:11 IST" duration-ms="2507" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.bellesboard.qa.testcases.ForgotPassPageTest@3c7f66c4]" started-at="2023-06-20T17:50:10 IST" name="closeBrowser" finished-at="2023-06-20T17:50:11 IST" duration-ms="1203" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->

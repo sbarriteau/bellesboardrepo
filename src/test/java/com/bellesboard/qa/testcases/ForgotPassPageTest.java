@@ -6,10 +6,13 @@ import com.bellesboard.qa.base.TestBase;
 import com.bellesboard.qa.pages.HomePage;
 import com.bellesboard.qa.pages.LoginPage;
 import com.bellesboard.qa.util.TestUtil;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,6 +30,8 @@ public class ForgotPassPageTest extends TestBase{
 	WebDriver wait;	
 	String[] arrSplit;
 	String  pwd;
+	String countEmail;
+	String resetPassLink;
 	
 	public ForgotPassPageTest() {
 		super();
@@ -90,24 +95,42 @@ public class ForgotPassPageTest extends TestBase{
 				}
 		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      String countEmail = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[2]")).getText();
-		      System.out.println("Number of email thread: "+countEmail);
-		    		      
-		      WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span"));
-		      eml.click();
-		      								
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);				
-				
-		      int cnt=Integer.parseInt(countEmail);  
-																																					//div[26]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a
-		      String resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");
-						      
-		      System.out.println("Reset Password link: "+resetPassLink);
+		      
+		      WebElement Thcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
+		      String id1 = Thcnt.getAttribute("id");
+		      System.out.println("ID of email thread: "+id1);
+		      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[1]/span"));
+		      //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	      
+		      if(driver.findElements(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).size() != 0)
+		      {
+		    	  countEmail = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).getText();
+		    	  eml.click();
+		    	  int cnt=Integer.parseInt(countEmail); 		      
+					
+			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+			      																																					
+			      resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");   		      
+			      
+		      }
+		      else
+		      {
+		    	  countEmail = "1";    	
+		    	  
+		    	  try {
+					     driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span/span")).click();
+					  } catch (Exception e) {
+					     JavascriptExecutor executor = (JavascriptExecutor) driver;
+					     executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span/span")));
+					  }  
+		    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+				  
+		      }  
+		      System.out.println("Reset Password link: "+resetPassLink);		    	  
 		      		      
 		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
-		    pwd = RandomStringPwd();
+		      pwd = RandomStringPwd();
 		      
 		      //Enter new password
 		      driver.findElement(By.id("NewPassword")).isDisplayed();
