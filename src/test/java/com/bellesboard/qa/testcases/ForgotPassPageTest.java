@@ -104,10 +104,16 @@ public class ForgotPassPageTest extends TestBase{
 		      if(driver.findElements(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).size() != 0)
 		      {
 		    	  countEmail = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).getText();
-		    	  eml.click();
+		    	  
 		    	  int cnt=Integer.parseInt(countEmail); 		      
 					
 			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+			      try {
+			    	  eml.click();
+					  } catch (Exception e) {
+					     JavascriptExecutor executor = (JavascriptExecutor) driver;
+					     executor.executeScript("arguments[0].click();", eml);
+					  } 
 			      																																					
 			      resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");   		      
 			      
@@ -126,7 +132,15 @@ public class ForgotPassPageTest extends TestBase{
 				  
 		      }  
 		      System.out.println("Reset Password link: "+resetPassLink);		    	  
-		      		      
+		      		   
+		      WebElement logout=driver.findElement(By.cssSelector(".gb_k"));
+		      logout.click();
+		   
+		      driver.switchTo().frame("account");
+		      
+		      WebElement signout=driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div[2]/span/a/span[2]/div/div"));
+		      signout.click();
+		      
 		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
@@ -136,6 +150,7 @@ public class ForgotPassPageTest extends TestBase{
 		      driver.findElement(By.id("NewPassword")).isDisplayed();
 	      		driver.findElement(By.id("NewPassword")).sendKeys(pwd);
 	      		driver.findElement(By.id("NewPassword_submit")).click();
+	      		driver.findElement(By.cssSelector("#NewPassword_good .alert")).isDisplayed();
 	      		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);  		 
 		      
 	  }
