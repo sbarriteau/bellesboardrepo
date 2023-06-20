@@ -74,7 +74,7 @@ public class TestBase {
     {		      
 		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?1234567890";
 		
-		String pwd = RandomStringUtils.random( 15, characters );
+		String pwd = RandomStringUtils.random( 10, characters );
 		System.out.println( pwd );		
 		return pwd; 	                
     }

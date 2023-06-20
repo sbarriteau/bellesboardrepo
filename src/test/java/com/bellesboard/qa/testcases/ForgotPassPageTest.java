@@ -32,6 +32,7 @@ public class ForgotPassPageTest extends TestBase{
 	String  pwd;
 	String countEmail;
 	String resetPassLink;
+	String paswd;
 	
 	public ForgotPassPageTest() {
 		super();
@@ -144,8 +145,8 @@ public class ForgotPassPageTest extends TestBase{
 		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
-		      pwd = RandomStringPwd();
-		      
+		      paswd = RandomStringPwd();
+		      pwd = "Te$t23"+paswd;
 		      //Enter new password
 		      driver.findElement(By.id("NewPassword")).isDisplayed();
 	      		driver.findElement(By.id("NewPassword")).sendKeys(pwd);
