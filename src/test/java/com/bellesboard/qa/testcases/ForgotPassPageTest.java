@@ -6,7 +6,7 @@ import com.bellesboard.qa.base.TestBase;
 import com.bellesboard.qa.pages.HomePage;
 import com.bellesboard.qa.pages.LoginPage;
 import com.bellesboard.qa.util.TestUtil;
-
+import org.openqa.selenium.StaleElementReferenceException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +17,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -101,7 +103,7 @@ public class ForgotPassPageTest extends TestBase{
 		      String id1 = Thcnt.getAttribute("id");
 		      System.out.println("ID of email thread: "+id1);
 		      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[1]/span"));
-		      //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	      
+		            
 		      if(driver.findElements(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).size() != 0)
 		      {
 		    	  countEmail = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).getText();
@@ -115,13 +117,15 @@ public class ForgotPassPageTest extends TestBase{
 					     JavascriptExecutor executor = (JavascriptExecutor) driver;
 					     executor.executeScript("arguments[0].click();", eml);
 					  } 
-			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);																																					
+			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+			      
+			      new WebDriverWait(driver, 10).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")));
+			     			      
 			      resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");   		      
 			      
 		      }
 		      else
-		      {
-		    	  //countEmail = "1";    	
+		      {    	 	
 		    	  
 		    	  try {
 					     driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span/span")).click();
