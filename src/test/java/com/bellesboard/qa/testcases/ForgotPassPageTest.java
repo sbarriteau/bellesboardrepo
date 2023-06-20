@@ -106,7 +106,7 @@ public class ForgotPassPageTest extends TestBase{
 		      {
 		    	  countEmail = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).getText();
 		    	  
-		    	  //int cnt=Integer.parseInt(countEmail); 		      
+		    	  int cnt=Integer.parseInt(countEmail); 		      
 					
 			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 			      try {
@@ -116,7 +116,7 @@ public class ForgotPassPageTest extends TestBase{
 					     executor.executeScript("arguments[0].click();", eml);
 					  } 
 			      																																					
-			      resetPassLink = driver.findElement(By.xpath("//div["+countEmail+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");   		      
+			      resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");   		      
 			      
 		      }
 		      else
