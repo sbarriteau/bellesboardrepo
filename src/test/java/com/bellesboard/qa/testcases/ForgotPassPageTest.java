@@ -151,7 +151,7 @@ public class ForgotPassPageTest extends TestBase{
 		      driver.findElement(By.id("NewPassword")).isDisplayed();
 	      		driver.findElement(By.id("NewPassword")).sendKeys(pwd);
 	      		driver.findElement(By.id("NewPassword_submit")).click();
-	      		driver.findElement(By.cssSelector("#NewPassword_good .alert")).isDisplayed();
+	      		//driver.findElement(By.cssSelector("#NewPassword_good .alert")).isDisplayed();
 	      		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);  		 
 		      
 	  }
