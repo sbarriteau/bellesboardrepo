@@ -7,6 +7,7 @@ import com.bellesboard.qa.pages.HomePage;
 import com.bellesboard.qa.pages.LoginPage;
 import com.bellesboard.qa.util.TestUtil;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.testng.annotations.BeforeTest;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -32,6 +33,7 @@ public class CreateUserTest extends TestBase{
 	String[] arrSplit;	
 	String usrname;
 	String pass;
+	String loginPass;
 	
 	public CreateUserTest() {
 		super();
@@ -121,17 +123,34 @@ public class CreateUserTest extends TestBase{
 		      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
 		      sub.sendKeys("Welcome to BellesBoard!");
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      //Click on Search button		      
+		      //Click Enter on Search field		      
 		      sub.sendKeys(Keys.ENTER);
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      
-		      String countEmail = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[2]")).getText();
+		      WebElement Thcnt1 = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
+		      String id2 = Thcnt1.getAttribute("id");
+		      System.out.println("ID of email thread: "+id2);
+		      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+id2+"\']/span[1]/span"));
+		      
+		      //Get the count of email thread
+		      String countEmail = driver.findElement(By.xpath("//*[@id=\'"+id2+"\']/span[2]")).getText();
 		      System.out.println("Number of Welcome email thread: "+countEmail);
+		      int cnt=Integer.parseInt(countEmail);
+		      eml.click();
+		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
 		      
-		      driver.findElement(By.xpath("//div[2]/span/span/span")).click();
-		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);		      
-		     
-		      String loginPass = driver.findElement(By.xpath("//div["+countEmail+"]//table/tbody/tr/td/ol/li")).getText();
-		      System.out.println("New Password line: "+loginPass);
+		      WebElement Thcnt = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL')]"));
+		      String id1 = Thcnt.getAttribute("id");
+		      System.out.println("ID of email thread: "+id1);
+		    if(cnt == 1)
+		    {
+		    	loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li[3]")).getText();
+		    }
+		    else
+		    {
+		       loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
+		    }
+		    System.out.println("New Password line: "+loginPass);
 		      arrSplit = loginPass.split(": ");
 		      System.out.println("New Password: "+arrSplit[1]);
 		     
@@ -152,6 +171,8 @@ public class CreateUserTest extends TestBase{
 			}
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.partialLinkText("Re-send Code")).isDisplayed();
+			
+			pause(7000);
 			
 				((JavascriptExecutor)driver).executeScript("window.open()");				
 
@@ -188,36 +209,52 @@ public class CreateUserTest extends TestBase{
 						}
 				      
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				      WebElement vThcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
+				      String vid = vThcnt.getAttribute("id");
+				      System.out.println("ID of email thread: "+vid);
+				      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[1]/span"));
 				      
-				      String countEmail = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[2]")).getText();
+				      String countEmail = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[2]")).getText();
 				      System.out.println("Number of email thread: "+countEmail);
-				      WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span/span"));
-				      eml.click();
-				      								
-				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);				
-						
+				      
 				      int cnt=Integer.parseInt(countEmail); 
 				      
-				      List<WebElement> allElement=driver.findElements(By.xpath("//div[contains(@class, 'a3s aiL')]"));
-				      int count=allElement.size();
-				      System.out.println("Count: "+count);
-				      String idd = allElement.get(count-1).getAttribute("id");
-				      System.out.println("Class ID: "+idd);
-				    //*[@id=":c2"]/div[1]/div[1]/table/tbody/tr/td/h2
-				      String verificationCode = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div["+cnt+"]/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[1]/div[1]/table/tbody/tr/td/h2")).getText();
+				      //WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span/span"));
+				      try {
+				    	  eml.click();
+						  } catch (Exception e) {
+						     JavascriptExecutor executor = (JavascriptExecutor) driver;
+						     executor.executeScript("arguments[0].click();", eml);
+						  } 
+				      								
+				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+				      									     				      
+				      WebElement vCode = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL ')]"));
+				      String vCodeid = vCode.getAttribute("id");
+				      System.out.println("ID of email thread: "+vCodeid);
+				      WebElement vCodeValue = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div["+cnt+"]/div/div/div/div//div[1]/div[2]/div[3]/div[3]/div/div[1]/div[1]/table/tbody/tr/td/h2"));
+				   				     
+				      String verificationCode = vCodeValue.getText();
 				      														 
 				      System.out.println("New Verification Code: "+verificationCode);
 				      
-				      driver.findElement(By.className("gb_Ta")).click(); // To click the flyout menu
-				      driver.findElement(By.className("gb_71")).click(); // To click the sign out button
+				      WebElement logout=driver.findElement(By.cssSelector(".gb_k"));
+				      logout.click();
+				   
+				      driver.switchTo().frame("account");
+				      
+				      WebElement signout=driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div[2]/span/a/span[2]/div/div"));
+				      signout.click();
 				      		      
 				      driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);  		 
 				      driver.close();
 				      driver.switchTo().window(tabs.get(0));
-				      WebElement vCode = driver.findElement(By.xpath("//input[@name='authCode']"));
-				      vCode.sendKeys(verificationCode);//Enter verification code   
+				      WebElement sendVCode = driver.findElement(By.xpath("//input[@name='authCode']"));
+				      sendVCode.sendKeys(verificationCode);//Enter verification code   
 				      
-			
+				      WebElement submit = driver.findElement(By.xpath("//button[@name='btntwofactor']"));
+				      submit.click();
+				      
 			//Wait for Login
 			  explicitWaitForElement("//*[@id=\"bellesBoardView\"]/div/div/div[1]/div[2]/div/a[1]");
 				

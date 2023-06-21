@@ -125,8 +125,7 @@ public class ForgotPassPageTest extends TestBase{
 			      
 		      }
 		      else
-		      {    	 	
-		    	  
+		      {       	  
 		    	  try {
 					     driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span/span")).click();
 					  } catch (Exception e) {

@@ -97,5 +97,13 @@ public class TestBase {
     // presenceOfElementLocated condition
     w.until(ExpectedConditions.presenceOfElementLocated (By.xpath(element)));
 	}
+	
+	public static void pause(Integer milliseconds){
+	    try {
+	        TimeUnit.MILLISECONDS.sleep(milliseconds);
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
+	}
 }
 
