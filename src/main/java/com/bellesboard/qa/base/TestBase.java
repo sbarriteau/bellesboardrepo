@@ -9,7 +9,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -104,6 +106,17 @@ public class TestBase {
 	    } catch (InterruptedException e) {
 	        e.printStackTrace();
 	    }
+	}
+	
+	public static boolean isAlertPresent() {
+		try {
+			Alert alert = driver.switchTo().alert();
+			System.out.println(alert.getText());
+			alert.accept();
+			return true;			
+		}catch(NoAlertPresentException e) {
+			return false;
+		}
 	}
 }
 

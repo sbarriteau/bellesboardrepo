@@ -103,11 +103,11 @@ public class ForgotPassPageTest extends TestBase{
 		      WebElement Thcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
 		      String id1 = Thcnt.getAttribute("id");
 		      System.out.println("ID of email thread: "+id1);
-		      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[1]/span"));
+		      WebElement eml = driver.findElement(By.xpath("//*[@id=\":2g\"]/span[1]/span"));
 		            
-		      if(driver.findElements(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).size() != 0)
+		      if(driver.findElements(By.xpath("//td[4]/div[2]/span[2]")).size() != 0)
 		      {
-		    	  countEmail = driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span[2]")).getText();
+		    	  countEmail = driver.findElement(By.xpath("//td[4]/div[2]/span[2]")).getText();
 		    	  
 		    	  int cnt=Integer.parseInt(countEmail); 		      
 					
@@ -128,27 +128,38 @@ public class ForgotPassPageTest extends TestBase{
 		      else
 		      {       	  
 		    	  try {
-					     driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span/span")).click();
+					     driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span")).click();
 					  } catch (Exception e) {
 					     JavascriptExecutor executor = (JavascriptExecutor) driver;
-					     executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@id=\'"+id1+"\']/span/span")));
+					     executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span")));
 					  }  
 		    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
 				  
+		    	  try
+		    	  {
+		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+					  
+		    	  }
+		    	  catch(StaleElementReferenceException e)
+		    	  {
+		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+					    
+		    	  }
 		      }  
 		      System.out.println("Reset Password link: "+resetPassLink);		    	  
 		     
-		      WebElement logout=driver.findElement(By.cssSelector(".gb_k"));
-		      logout.click();
+		      WebElement profileLink = driver.findElement(By.cssSelector(".gb_k"));
+		      profileLink.click();
 		   
-		      driver.switchTo().frame("account");
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      WebElement signout=driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div[2]/span/a/span[2]/div/div"));
+		      driver.switchTo().frame(2);
+		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		      WebElement signout=driver.findElement(By.xpath("//div[2]/span/a/span[2]/div/div"));
 		      signout.click();
 		      
+		      Boolean a = isAlertPresent();
 		      
-		      driver.switchTo().frame(0);
-		      
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      driver.findElement(By.xpath("//*[@id=\"headingText\"]/span")).isDisplayed();
 		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
@@ -160,7 +171,7 @@ public class ForgotPassPageTest extends TestBase{
 	      		driver.findElement(By.id("NewPassword_submit")).click();
 	      		driver.findElement(By.cssSelector("#NewPassword_good .alert")).isDisplayed();
 	      		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);  		 
-		      
+	      		pause(3000);
 	  }
 	  
 	  @Test(groups={"smoke"}, priority = 3)
