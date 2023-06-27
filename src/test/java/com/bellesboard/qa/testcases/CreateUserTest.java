@@ -35,6 +35,7 @@ public class CreateUserTest extends TestBase{
 	String pass;
 	String loginPass;
 	int cnt;
+	int cont;
 	
 	public CreateUserTest() {
 		super();
@@ -232,7 +233,7 @@ public class CreateUserTest extends TestBase{
 					      String countEmail = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[2]")).getText();
 					      System.out.println("Number of email thread: "+countEmail);
 					      
-					      int cnt=Integer.parseInt(countEmail); 
+					      cont=Integer.parseInt(countEmail); 
 					      
 					      //WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span/span"));
 					      try {
@@ -247,13 +248,15 @@ public class CreateUserTest extends TestBase{
 				      
 				      else
 				      {
+				    	  cont = 1;
+				    	  
 				    	  JavascriptExecutor executor = (JavascriptExecutor) driver;
 						     executor.executeScript("arguments[0].click();", eml); 
 				      }
 				      WebElement vCode = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL ')]"));
 				      String vCodeid = vCode.getAttribute("id");
 				      System.out.println("ID of email thread: "+vCodeid);
-				      WebElement vCodeValue = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div["+cnt+"]/div/div/div/div//div[1]/div[2]/div[3]/div[3]/div/div[1]/div[1]/table/tbody/tr/td/h2"));
+				      WebElement vCodeValue = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div["+cont+"]/div/div/div/div//div[1]/div[2]/div[3]/div[3]/div/div[1]/div[1]/table/tbody/tr/td/h2"));
 				   				     
 				      String verificationCode = vCodeValue.getText();
 				      														 
@@ -261,7 +264,7 @@ public class CreateUserTest extends TestBase{
 				      
 				      WebElement logout=driver.findElement(By.cssSelector(".gb_k"));
 				      logout.click();
-				   
+				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				      driver.switchTo().frame("account");
 				      
 				      WebElement signout=driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div[2]/span/a/span[2]/div/div"));
