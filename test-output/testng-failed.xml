@@ -8,7 +8,6 @@
           <include name="loginWithNewPass"/>
           <include name="closeBrowser"/>
           <include name="setUp"/>
-          <include name="CheckWelcomeMail"/>
         </methods>
       </class> <!-- com.bellesboard.qa.testcases.CreateUserTest -->
     </classes>

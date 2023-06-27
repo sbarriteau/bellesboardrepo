@@ -34,6 +34,7 @@ public class CreateUserTest extends TestBase{
 	String usrname;
 	String pass;
 	String loginPass;
+	int cnt;
 	
 	public CreateUserTest() {
 		super();
@@ -131,25 +132,37 @@ public class CreateUserTest extends TestBase{
 		      String id2 = Thcnt1.getAttribute("id");
 		      System.out.println("ID of email thread: "+id2);
 		      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+id2+"\']/span[1]/span"));
+		      //List<WebElement> em = driver.findElements(By.xpath("//*[@id=\'"+id2+"\']/span[2]"));
+		      if(driver.findElements(By.xpath("//*[@id=\'"+id2+"\']/span[2]")).size() != 0)
+		      {
+		    	  //Get the count of email thread
 		      
-		      //Get the count of email thread
-		      String countEmail = driver.findElement(By.xpath("//*[@id=\'"+id2+"\']/span[2]")).getText();
-		      System.out.println("Number of Welcome email thread: "+countEmail);
-		      int cnt=Integer.parseInt(countEmail);
-		      eml.click();
+		      String cntEmail = driver.findElement(By.xpath("//*[@id=\'"+id2+"\']/span[2]")).getText();
+		      System.out.println("Number of Welcome email thread: "+cntEmail);
+		      cnt = Integer.parseInt(cntEmail);
+		      try {
+		    	  eml.click();
+				  } catch (Exception e) {
+				     JavascriptExecutor executor = (JavascriptExecutor) driver;
+				     executor.executeScript("arguments[0].click();", eml);
+				  } 
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
 		      
-		      WebElement Thcnt = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL')]"));
-		      String id1 = Thcnt.getAttribute("id");
-		      System.out.println("ID of email thread: "+id1);
-		    if(cnt == 1)
-		    {
-		    	loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li[3]")).getText();
-		    }
-		    else
-		    {
-		       loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
-		    }
+		      loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
+		      }
+		      else
+		      {
+		    	  try {
+					     eml.click();
+					  } catch (Exception e) {
+					     JavascriptExecutor executor = (JavascriptExecutor) driver;
+					     executor.executeScript("arguments[0].click();", eml);
+					  } 
+		    	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		    	  loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div[1]//table/tbody/tr/td/ol/li[3]")).getText();
+		      }
+		    	  
+		  		      
 		    System.out.println("New Password line: "+loginPass);
 		      arrSplit = loginPass.split(": ");
 		      System.out.println("New Password: "+arrSplit[1]);
@@ -214,21 +227,29 @@ public class CreateUserTest extends TestBase{
 				      System.out.println("ID of email thread: "+vid);
 				      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[1]/span"));
 				      
-				      String countEmail = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[2]")).getText();
-				      System.out.println("Number of email thread: "+countEmail);
+				      if(driver.findElements(By.xpath("//*[@id=\'"+vid+"\']/span[2]")).size() != 0)
+				      {
+					      String countEmail = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[2]")).getText();
+					      System.out.println("Number of email thread: "+countEmail);
+					      
+					      int cnt=Integer.parseInt(countEmail); 
+					      
+					      //WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span/span"));
+					      try {
+					    	  eml.click();
+							  } catch (Exception e) {
+							     JavascriptExecutor executor = (JavascriptExecutor) driver;
+							     executor.executeScript("arguments[0].click();", eml);
+							  } 
+					      								
+					      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+				      }	
 				      
-				      int cnt=Integer.parseInt(countEmail); 
-				      
-				      //WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span/span"));
-				      try {
-				    	  eml.click();
-						  } catch (Exception e) {
-						     JavascriptExecutor executor = (JavascriptExecutor) driver;
-						     executor.executeScript("arguments[0].click();", eml);
-						  } 
-				      								
-				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
-				      									     				      
+				      else
+				      {
+				    	  JavascriptExecutor executor = (JavascriptExecutor) driver;
+						     executor.executeScript("arguments[0].click();", eml); 
+				      }
 				      WebElement vCode = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL ')]"));
 				      String vCodeid = vCode.getAttribute("id");
 				      System.out.println("ID of email thread: "+vCodeid);
