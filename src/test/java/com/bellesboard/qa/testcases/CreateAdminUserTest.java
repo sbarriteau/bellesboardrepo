@@ -132,24 +132,25 @@ public class CreateAdminUserTest extends TestBase{
 		      WebElement Thcnt1 = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
 		      String id2 = Thcnt1.getAttribute("id");
 		      System.out.println("ID of email thread: "+id2);
-		      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+id2+"\']/span[1]/span"));
+		      WebElement eml = driver.findElement(By.xpath("//*[@id="+id2+"]/span[1]/span"));
 		      //List<WebElement> em = driver.findElements(By.xpath("//*[@id=\'"+id2+"\']/span[2]"));
-		      if(driver.findElements(By.xpath("//*[@id=\'"+id2+"\']/span[2]")).size() != 0)
+		      if(driver.findElements(By.xpath("//*[@id=\""+id2+"\"]/span[2]")).size() != 0)
 		      {
 		    	  //Get the count of email thread
 		      
-		      String cntEmail = driver.findElement(By.xpath("//*[@id=\'"+id2+"\']/span[2]")).getText();
-		      System.out.println("Number of Welcome email thread: "+cntEmail);
-		      cnt = Integer.parseInt(cntEmail);
-		      try {
-		    	  eml.click();
-				  } catch (Exception e) {
-				     JavascriptExecutor executor = (JavascriptExecutor) driver;
-				     executor.executeScript("arguments[0].click();", eml);
-				  } 
-		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
-		      
-		      loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
+			      String cntEmail = driver.findElement(By.xpath("//*[@id=\""+id2+"\"]/span[2]")).getText();
+			      System.out.println("Number of Welcome email thread: "+cntEmail);
+			     
+			      cnt = Integer.parseInt(cntEmail);
+			      try {
+			    	  eml.click();
+					  } catch (Exception e) {
+					     JavascriptExecutor executor = (JavascriptExecutor) driver;
+					     executor.executeScript("arguments[0].click();", eml);
+					  } 
+			      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
+			      
+			      loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
 		      }
 		      else
 		      {
