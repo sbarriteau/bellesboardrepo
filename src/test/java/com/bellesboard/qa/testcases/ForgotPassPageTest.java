@@ -137,7 +137,7 @@ public class ForgotPassPageTest extends TestBase{
 				  
 		      }  
 		      System.out.println("Reset Password link: "+resetPassLink);		    	  
-		     
+		     /*
 		      WebElement logout=driver.findElement(By.cssSelector(".gb_k"));
 		      logout.click();
 		   
@@ -145,7 +145,7 @@ public class ForgotPassPageTest extends TestBase{
 		      
 		      WebElement signout=driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div[2]/span/a/span[2]/div/div"));
 		      signout.click();
-		      
+		      */
 		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
