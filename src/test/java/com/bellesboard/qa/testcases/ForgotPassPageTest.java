@@ -103,7 +103,7 @@ public class ForgotPassPageTest extends TestBase{
 		      WebElement Thcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
 		      String id1 = Thcnt.getAttribute("id");
 		      System.out.println("ID of email thread: "+id1);
-		      WebElement eml = driver.findElement(By.xpath("//*[@id=\":2g\"]/span[1]/span"));
+		      WebElement eml = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
 		            
 		      if(driver.findElements(By.xpath("//td[4]/div[2]/span[2]")).size() != 0)
 		      {
