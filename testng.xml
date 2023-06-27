@@ -16,7 +16,7 @@
 		
 	<test name="Create_New_User" enabled ="true">
 	<classes>
-		<class name="com.bellesboard.qa.testcases.CreateUserTest"/>
+		<class name="com.bellesboard.qa.testcases.CreateAdminUserTest"/>
 	</classes>
 	</test>
 	

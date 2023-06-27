@@ -25,7 +25,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList; // import the ArrayList class
 import java.util.List;
 
-public class CreateUserTest extends TestBase{
+public class CreateAdminUserTest extends TestBase{
   
 	LoginPage loginPage;
 	HomePage homePage;	
@@ -37,7 +37,7 @@ public class CreateUserTest extends TestBase{
 	int cnt;
 	int cont;
 	
-	public CreateUserTest() {
+	public CreateAdminUserTest() {
 		super();
 	}
 	
