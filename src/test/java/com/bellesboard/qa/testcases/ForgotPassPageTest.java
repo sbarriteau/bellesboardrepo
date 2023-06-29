@@ -35,6 +35,7 @@ public class ForgotPassPageTest extends TestBase{
 	String countEmail;
 	String resetPassLink;
 	String paswd;
+	int cnt = 1;
 	
 	public ForgotPassPageTest() {
 		super();
@@ -91,14 +92,7 @@ public class ForgotPassPageTest extends TestBase{
 		      
 		      //Click on Search button		      
 		      sub.sendKeys(Keys.ENTER);
-		      try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		      
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      pause(1000);		      
 		      
 		      WebElement Thcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
 		      String id1 = Thcnt.getAttribute("id");
@@ -133,16 +127,16 @@ public class ForgotPassPageTest extends TestBase{
 					     JavascriptExecutor executor = (JavascriptExecutor) driver;
 					     executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span")));
 					  }  
-		    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+		    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]//div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
 				  
 		    	  try
 		    	  {
-		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]//div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
 					  
 		    	  }
 		    	  catch(StaleElementReferenceException e)
 		    	  {
-		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]//div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
 					    
 		    	  }
 		      }  
