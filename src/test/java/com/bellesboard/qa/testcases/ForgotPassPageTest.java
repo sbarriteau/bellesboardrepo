@@ -43,14 +43,15 @@ public class ForgotPassPageTest extends TestBase{
 	
 	@BeforeMethod
 	public void setUp() {
-		initialization();		
+		initialization();
+		
 	}
 		
 	  	
 	  @Test(groups={"smoke"}, priority = 1)
 	  public void forgotPassPage() {
 		  System.out.println("Forgot Password Page Test");
-		
+		  //ClearGmail();
 		  Assert.assertEquals(driver.getTitle(), "Login");
 		  driver.findElement(By.id("forgot")).isDisplayed();
 		  driver.findElement(By.id("forgot")).click(); //Click on Forgot Password link
@@ -85,61 +86,16 @@ public class ForgotPassPageTest extends TestBase{
 		      
 		      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();//Click on Next button
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		         
 		      
-		      //Search Password reset email by subject
-		      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
-		      sub.sendKeys("BellesBoard - Password Reset");
-		      
-		      //Click on Search button		      
-		      sub.sendKeys(Keys.ENTER);
-		      pause(1000);		      
-		      
-		      WebElement Thcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
-		      String id1 = Thcnt.getAttribute("id");
-		      System.out.println("ID of email thread: "+id1);
-		      WebElement eml = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
-		            
-		      if(driver.findElements(By.xpath("//td[4]/div[2]/span[2]")).size() != 0)
-		      {
-		    	  countEmail = driver.findElement(By.xpath("//td[4]/div[2]/span[2]")).getText();
-		    	  
-		    	  int cnt=Integer.parseInt(countEmail); 		      
-					
-			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
-			      try {
-			    	  eml.click();
-					  } catch (Exception e) {
-					     JavascriptExecutor executor = (JavascriptExecutor) driver;
-					     executor.executeScript("arguments[0].click();", eml);
-					  } 
-			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
-			      
-			      new WebDriverWait(driver, 10).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")));
-			     			      
-			      resetPassLink = driver.findElement(By.xpath("//div["+cnt+"]/div/div/div/div/div/div[2]/div[3]/div[3]/div/div[2]/div/table/tbody/tr/td/p/a")).getAttribute("href");   		      
-			      
-		      }
-		      else
-		      {       	  
-		    	  try {
-					     driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span")).click();
-					  } catch (Exception e) {
-					     JavascriptExecutor executor = (JavascriptExecutor) driver;
-					     executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span")));
-					  }  
-		    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]//div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
-				  
-		    	  try
-		    	  {
-		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]//div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
-					  
-		    	  }
-		    	  catch(StaleElementReferenceException e)
-		    	  {
-		    		  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]//div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
-					    
-		    	  }
-		      }  
+		      try {
+				     driver.findElement(By.xpath("//span[contains(text(),'BellesBoard - Password Reset')]")).click();
+				  } catch (Exception e) {
+				     JavascriptExecutor executor = (JavascriptExecutor) driver;
+				     executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//span[contains(text(),'BellesBoard - Password Reset')]")));
+				  }  
+	    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+	    	  
 		      System.out.println("Reset Password link: "+resetPassLink);		    	  
 		     
 		      WebElement profileLink = driver.findElement(By.cssSelector(".gb_k"));
@@ -153,8 +109,7 @@ public class ForgotPassPageTest extends TestBase{
 		      Boolean a = isAlertPresent();
 		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      //driver.findElement(By.xpath("//*[@id=\"headingText\"]/span")).isDisplayed();
-		      
+		      		      
 		      //Open Reset Password URL
 		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
@@ -176,7 +131,7 @@ public class ForgotPassPageTest extends TestBase{
 			loginPage = new LoginPage();
 			System.out.println("New Password: "+pwd);
 			loginPage.login(prop.getProperty("NewUser"), pwd);
-			
+			pause(2000);
 			System.out.println("User logged In with new Password Successfully!");
 		}
 	 	  	  

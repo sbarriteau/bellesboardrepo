@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +14,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -118,5 +120,58 @@ public class TestBase {
 			return false;
 		}
 	}
+	
+	public void ClearGmail() {
+	  	driver.navigate().to("https://mail.google.com/");
+		
+	      //identify email
+	      WebElement l = driver.findElement(By.name("identifier"));
+	      l.sendKeys(prop.getProperty("NewUser"));
+	      WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
+	      b.click();
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      //identify password
+	      String pass = prop.getProperty("gmailPass");
+	      WebElement p = driver.findElement(By.xpath("//input[@name='Passwd']"));
+	      p.sendKeys(pass);
+	      
+	      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+	      pause(1000);
+	          
+	      
+	      if(driver.findElements( By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).size() == 0)
+		      {
+		    	//driver.findElement(By.xpath("//*[@id=\":1y\"]/div[1]/span")).click();
+			      driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
+			      
+			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
+			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      }
+		      else
+		      {
+		    	  System.out.println("No email!");
+		      }
+		      
+		    //div[contains(text(),'Your Primary tab is empty.')]
+	      try {
+	    	  driver.findElement(By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).isDisplayed();
+	    	}
+	    	catch(org.openqa.selenium.StaleElementReferenceException ex)
+	    	{
+	    		driver.findElement(By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).isDisplayed();
+	    	}
+		      
+	      
+		      WebElement logout=driver.findElement(By.cssSelector(".gb_k"));
+		      logout.click();
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      driver.switchTo().frame(2);
+		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		      WebElement signout=driver.findElement(By.xpath("//div[2]/span/a/span[2]/div/div"));
+		      signout.click();      
+		      driver.get(prop.getProperty("url"));	
+		}
 }
 

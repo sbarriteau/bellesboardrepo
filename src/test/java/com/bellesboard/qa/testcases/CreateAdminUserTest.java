@@ -45,8 +45,12 @@ public class CreateAdminUserTest extends TestBase{
 	public void setUp() {
 		initialization();	
 		loginPage = new LoginPage();
+		
+		ClearGmail();
 		loginPage.login(prop.getProperty("adminTestUser"), prop.getProperty("password"));
 	}
+	
+	
 				  	
 	  @Test(priority = 1)
 	  public void createUserPage() {
@@ -100,28 +104,53 @@ public class CreateAdminUserTest extends TestBase{
 			  }
 				
 		  driver.findElement(By.partialLinkText("Welcome")).click();	
-		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();
-		  
+		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).click();		  
 	  }
 	  
 	  @Test(priority = 2)
 		public void CheckWelcomeMail() {
 		  	driver.navigate().to("https://mail.google.com/");
-			
+		  	driver.findElement(By.xpath("//li/div/div/div/div[2]/div")).click();
 		      //identify email
-		      WebElement l = driver.findElement(By.name("identifier"));
-		      l.sendKeys(usrname);
-		      WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
-		      b.click();
+		     // WebElement l = driver.findElement(By.name("identifier"));
+		     // l.sendKeys(usrname);
+		     // WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
+		      //b.click();
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      //identify password
 		      pass = prop.getProperty("gmailPass");
-		      WebElement p = driver.findElement(By.xpath("//input[@name='Passwd']"));
+		      WebElement p = driver.findElement(By.xpath("//input[@name='password']"));
 		      p.sendKeys(pass);
 		      
 		      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      pause(2000);
+		      WebElement Weleml = driver.findElement(By.xpath("//td[5]/div/div/div/span/span"));
+		     
+		      try {
+		    	  Weleml.click();
+		    	}
+		    	catch(org.openqa.selenium.StaleElementReferenceException ex)
+		    	{
+		    		Weleml.click();
+		    	}
+		      /*
+		      try {
+		    	  Weleml.click();
+				  } catch (Exception e) {
+				     JavascriptExecutor executor = (JavascriptExecutor) driver;
+				     executor.executeScript("arguments[0].click();", Weleml);
+				  }*/ 
 		      
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      pause(2000);
+		      
+		      loginPass =  driver.findElement(By.xpath("//li[contains(text(),'Your password:')]")).getText();
+		      System.out.println("New Pass "+loginPass);
+		      
+		      //loginPass = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/ol/li[3]")).getText();
+		      
+		      /*
 		      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
 		      sub.sendKeys("from:the bees foundation Welcome to bellesboard! ");
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -147,9 +176,13 @@ public class CreateAdminUserTest extends TestBase{
 					     executor.executeScript("arguments[0].click();", eml);
 					  } 
 			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
-			      
+			      pause(1000);
+			      if(cnt == 2) {
+			    	  loginPass = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/ol/li")).getText();
+			      }else
+			      {
 			      loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
-		      }
+		      }}
 		      else
 		      {
 		    	  try {
@@ -159,10 +192,11 @@ public class CreateAdminUserTest extends TestBase{
 					     executor.executeScript("arguments[0].click();", eml);
 					  } 
 		    	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		    	  loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div[1]//table/tbody/tr/td/ol/li[3]")).getText();
+		    	  pause(1000);
+		    	  loginPass = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/ol/li[3]")).getText();
 		      }
 		    	  
-		  		      
+		  		  */    
 		    System.out.println("New Password line: "+loginPass);
 		      arrSplit = loginPass.split(": ");
 		      System.out.println("New Password: "+arrSplit[1]);
@@ -176,12 +210,8 @@ public class CreateAdminUserTest extends TestBase{
 			loginPage = new LoginPage();
 			System.out.println("New Password from gmail: "+arrSplit[1]);
 			loginPage.login(usrname, arrSplit[1]);
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			pause(1000);
+			
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.partialLinkText("Re-send Code")).isDisplayed();
 			
@@ -220,21 +250,21 @@ public class CreateAdminUserTest extends TestBase{
 				      WebElement vThcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
 				      String vid = vThcnt.getAttribute("id");
 				      System.out.println("ID of email thread: "+vid);
-				      WebElement eml = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[1]/span"));
+				      WebElement emal = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
 				      
-				      if(driver.findElements(By.xpath("//*[@id=\'"+vid+"\']/span[2]")).size() != 0)
+				      if(driver.findElements(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).size() != 0)
 				      {
-					      String countEmail = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/span[2]")).getText();
+					      String countEmail = driver.findElement(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).getText();
 					      System.out.println("Number of email thread: "+countEmail);
 					      
 					      cont=Integer.parseInt(countEmail); 
 					      
 					      //WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span/span"));
 					      try {
-					    	  eml.click();
+					    	  emal.click();
 							  } catch (Exception e) {
 							     JavascriptExecutor executor = (JavascriptExecutor) driver;
-							     executor.executeScript("arguments[0].click();", eml);
+							     executor.executeScript("arguments[0].click();", emal);
 							  } 
 					      								
 					      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
@@ -245,7 +275,7 @@ public class CreateAdminUserTest extends TestBase{
 				    	  cont = 1;
 				    	  
 				    	  JavascriptExecutor executor = (JavascriptExecutor) driver;
-						     executor.executeScript("arguments[0].click();", eml); 
+						     executor.executeScript("arguments[0].click();", emal); 
 				      }
 				      WebElement vCode = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL ')]"));
 				      String vCodeid = vCode.getAttribute("id");
