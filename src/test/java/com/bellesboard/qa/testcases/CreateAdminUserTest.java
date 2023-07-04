@@ -123,22 +123,20 @@ public class CreateAdminUserTest extends TestBase{
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      
 		      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
-		      sub.sendKeys("Welcome to BellesBoard!");
+		      sub.sendKeys("from:the bees foundation Welcome to bellesboard! ");
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      //Click Enter on Search field		      
 		      sub.sendKeys(Keys.ENTER);
+		      pause(1000);
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      
-		      WebElement Thcnt1 = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
-		      String id2 = Thcnt1.getAttribute("id");
-		      System.out.println("ID of email thread: "+id2);
-		      WebElement eml = driver.findElement(By.xpath("//*[@id="+id2+"]/span[1]/span"));
+		      		      
+		      WebElement eml = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
 		      //List<WebElement> em = driver.findElements(By.xpath("//*[@id=\'"+id2+"\']/span[2]"));
-		      if(driver.findElements(By.xpath("//*[@id=\""+id2+"\"]/span[2]")).size() != 0)
+		      if(driver.findElements(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).size() != 0)
 		      {
 		    	  //Get the count of email thread
 		      
-			      String cntEmail = driver.findElement(By.xpath("//*[@id=\""+id2+"\"]/span[2]")).getText();
+			      String cntEmail = driver.findElement(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).getText();
 			      System.out.println("Number of Welcome email thread: "+cntEmail);
 			     
 			      cnt = Integer.parseInt(cntEmail);
@@ -148,7 +146,7 @@ public class CreateAdminUserTest extends TestBase{
 					     JavascriptExecutor executor = (JavascriptExecutor) driver;
 					     executor.executeScript("arguments[0].click();", eml);
 					  } 
-			      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
+			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 			      
 			      loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
 		      }
@@ -216,12 +214,7 @@ public class CreateAdminUserTest extends TestBase{
 				      
 				      //Click on Search button		      
 				      sub.sendKeys(Keys.ENTER);
-				      try {
-							Thread.sleep(50);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+				      pause(1000);
 				      
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				      WebElement vThcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
@@ -266,9 +259,9 @@ public class CreateAdminUserTest extends TestBase{
 				      WebElement logout=driver.findElement(By.cssSelector(".gb_k"));
 				      logout.click();
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				      driver.switchTo().frame("account");
-				      
-				      WebElement signout=driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div[2]/span/a/span[2]/div/div"));
+				      driver.switchTo().frame(2);
+				      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+				      WebElement signout=driver.findElement(By.xpath("//div[2]/span/a/span[2]/div/div"));
 				      signout.click();
 				      		      
 				      driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);  		 

@@ -153,7 +153,9 @@ public class ForgotPassPageTest extends TestBase{
 		      Boolean a = isAlertPresent();
 		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      driver.findElement(By.xpath("//*[@id=\"headingText\"]/span")).isDisplayed();
+		      //driver.findElement(By.xpath("//*[@id=\"headingText\"]/span")).isDisplayed();
+		      
+		      //Open Reset Password URL
 		      driver.navigate().to(resetPassLink);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      
