@@ -127,14 +127,14 @@ public class CreateAdminUserTest extends TestBase{
 		      pause(2000);
 		      WebElement Weleml = driver.findElement(By.xpath("//td[5]/div/div/div/span/span"));
 		     
+		      //WebElement Weleml = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
+		      
 		      try {
 		    	  Weleml.click();
-		    	}
-		    	catch(org.openqa.selenium.StaleElementReferenceException ex)
-		    	{
-		    		pause(2000);
-		    		Weleml.click();
-		    	}
+				  } catch (Exception e) {
+				     JavascriptExecutor executor = (JavascriptExecutor) driver;
+				     executor.executeScript("arguments[0].click();", Weleml);
+				  } 
 		      		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      pause(2000);
@@ -193,9 +193,7 @@ public class CreateAdminUserTest extends TestBase{
 				      pause(2000);
 				      
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				      WebElement vThcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
-				      String vid = vThcnt.getAttribute("id");
-				      System.out.println("ID of email thread: "+vid);
+				      
 				      WebElement emal = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
 				      
 				      try {
@@ -206,8 +204,11 @@ public class CreateAdminUserTest extends TestBase{
 						  } 
 				      								
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				      pause(2000);			     
-				      WebElement vCodeValue = driver.findElement(By.xpath("//tbody//tr//td//h2"));
+				      pause(2000);	
+				      WebElement vThcnt = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL ')]"));
+				      String vid = vThcnt.getAttribute("id");
+				      System.out.println("ID of email thread: "+vid);
+				      WebElement vCodeValue = driver.findElement(By.xpath("//*[@id=\'"+vid+"\']/div[1]/div[1]/table/tbody/tr/td/h2"));
 				   				     
 				      String verificationCode = vCodeValue.getText();
 				      														 
