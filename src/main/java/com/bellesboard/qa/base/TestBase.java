@@ -139,21 +139,17 @@ public class TestBase {
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 	      pause(1000);
 	          
-	      
-	      if(driver.findElements( By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).size() == 0)
-		      {
-		    	//driver.findElement(By.xpath("//*[@id=\":1y\"]/div[1]/span")).click();
-			      driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
-			      
-			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
-			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      }
-		      else
-		      {
-		    	  System.out.println("No email!");
-		      }
+	      if(!driver.findElements(By.xpath("//*[@id=\":2a\"]")).isEmpty()){
+	    	  System.out.println("Hurray! No emails!");
+	      }else{
+	         
+		      driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
 		      
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      }
+	    
 		    //div[contains(text(),'Your Primary tab is empty.')]
 	      try {
 	    	  driver.findElement(By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).isDisplayed();
@@ -170,7 +166,8 @@ public class TestBase {
 		      driver.switchTo().frame(2);
 		      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		      WebElement signout=driver.findElement(By.xpath("//div[2]/span/a/span[2]/div/div"));
-		      signout.click();      
+		      signout.click();     
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      driver.get(prop.getProperty("url"));	
 		}
 }

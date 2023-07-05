@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.bellesboard.qa.testcases.ForgotPassPageTest">
+      <class name="com.bellesboard.qa.testcases.CreateAdminUserTest">
         <methods>
+          <include name="loginWithNewPass"/>
           <include name="closeBrowser"/>
-          <include name="checkLoginWithNewPassword"/>
           <include name="setUp"/>
-          <include name="CheckReseteMail"/>
         </methods>
-      </class> <!-- com.bellesboard.qa.testcases.ForgotPassPageTest -->
+      </class> <!-- com.bellesboard.qa.testcases.CreateAdminUserTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

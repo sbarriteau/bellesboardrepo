@@ -51,7 +51,7 @@ public class ForgotPassPageTest extends TestBase{
 	  @Test(groups={"smoke"}, priority = 1)
 	  public void forgotPassPage() {
 		  System.out.println("Forgot Password Page Test");
-		  //ClearGmail();
+		  ClearGmail();
 		  Assert.assertEquals(driver.getTitle(), "Login");
 		  driver.findElement(By.id("forgot")).isDisplayed();
 		  driver.findElement(By.id("forgot")).click(); //Click on Forgot Password link

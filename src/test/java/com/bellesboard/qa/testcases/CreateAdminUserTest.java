@@ -132,6 +132,7 @@ public class CreateAdminUserTest extends TestBase{
 		    	}
 		    	catch(org.openqa.selenium.StaleElementReferenceException ex)
 		    	{
+		    		pause(2000);
 		    		Weleml.click();
 		    	}
 		      /*
@@ -236,6 +237,15 @@ public class CreateAdminUserTest extends TestBase{
 				      
 				      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();//Click on Next button
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				      
+				    //Click on Email Subject
+				      WebElement subLnk = driver.findElement(By.xpath("//span[contains(text(),'BellesBoard Login Verification')]"));
+				      try {
+				    	  subLnk.click();
+						  } catch (Exception e) {
+						     JavascriptExecutor executor = (JavascriptExecutor) driver;
+						     executor.executeScript("arguments[0].click();", subLnk);
+						  } 
 				      
 				      //Search Password reset email by subject
 				      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
