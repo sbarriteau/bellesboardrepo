@@ -206,7 +206,7 @@ public class CreateAdminUserTest extends TestBase{
 						  } 
 				      								
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				     				     
+				      pause(2000);			     
 				      WebElement vCodeValue = driver.findElement(By.xpath("//tbody//tr//td//h2"));
 				   				     
 				      String verificationCode = vCodeValue.getText();
