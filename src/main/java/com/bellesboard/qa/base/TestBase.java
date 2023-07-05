@@ -139,18 +139,19 @@ public class TestBase {
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 	      pause(1000);
 	          
-	      if(!driver.findElements(By.xpath("//*[@id=\":2a\"]")).isEmpty()){
-	    	  System.out.println("Hurray! No emails!");
-	      }else{
-	         
-		      driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
+	      if(!driver.findElements(By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).isEmpty()){
+	    	  driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
 		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	    	  
+	      }else{
+	    	  System.out.println("Hurray! No emails!");
+		      
 	      }
 	      pause(1000);
-		    //div[contains(text(),'Your Primary tab is empty.')]
+		    
 	      try {
 	    	  driver.findElement(By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).isDisplayed();
 	    	}
