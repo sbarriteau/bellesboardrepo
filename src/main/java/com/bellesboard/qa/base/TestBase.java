@@ -149,7 +149,7 @@ public class TestBase {
 		      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	      }
-	    
+	      pause(1000);
 		    //div[contains(text(),'Your Primary tab is empty.')]
 	      try {
 	    	  driver.findElement(By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).isDisplayed();

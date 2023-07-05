@@ -135,69 +135,14 @@ public class CreateAdminUserTest extends TestBase{
 		    		pause(2000);
 		    		Weleml.click();
 		    	}
-		      /*
-		      try {
-		    	  Weleml.click();
-				  } catch (Exception e) {
-				     JavascriptExecutor executor = (JavascriptExecutor) driver;
-				     executor.executeScript("arguments[0].click();", Weleml);
-				  }*/ 
-		      
+		      		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      pause(2000);
 		      
 		      loginPass =  driver.findElement(By.xpath("//li[contains(text(),'Your password:')]")).getText();
 		      System.out.println("New Pass "+loginPass);
 		      
-		      //loginPass = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/ol/li[3]")).getText();
-		      
-		      /*
-		      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
-		      sub.sendKeys("from:the bees foundation Welcome to bellesboard! ");
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      //Click Enter on Search field		      
-		      sub.sendKeys(Keys.ENTER);
-		      pause(1000);
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      		      
-		      WebElement eml = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
-		      //List<WebElement> em = driver.findElements(By.xpath("//*[@id=\'"+id2+"\']/span[2]"));
-		      if(driver.findElements(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).size() != 0)
-		      {
-		    	  //Get the count of email thread
-		      
-			      String cntEmail = driver.findElement(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).getText();
-			      System.out.println("Number of Welcome email thread: "+cntEmail);
-			     
-			      cnt = Integer.parseInt(cntEmail);
-			      try {
-			    	  eml.click();
-					  } catch (Exception e) {
-					     JavascriptExecutor executor = (JavascriptExecutor) driver;
-					     executor.executeScript("arguments[0].click();", eml);
-					  } 
-			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
-			      pause(1000);
-			      if(cnt == 2) {
-			    	  loginPass = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/ol/li")).getText();
-			      }else
-			      {
-			      loginPass = driver.findElement(By.xpath("//div[7]//div[2]/div/div[3]/div["+cnt+"]//table/tbody/tr/td/ol/li")).getText();
-		      }}
-		      else
-		      {
-		    	  try {
-					     eml.click();
-					  } catch (Exception e) {
-					     JavascriptExecutor executor = (JavascriptExecutor) driver;
-					     executor.executeScript("arguments[0].click();", eml);
-					  } 
-		    	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		    	  pause(1000);
-		    	  loginPass = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/ol/li[3]")).getText();
-		      }
-		    	  
-		  		  */    
+		         
 		    System.out.println("New Password line: "+loginPass);
 		      arrSplit = loginPass.split(": ");
 		      System.out.println("New Password: "+arrSplit[1]);
@@ -216,7 +161,7 @@ public class CreateAdminUserTest extends TestBase{
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.findElement(By.partialLinkText("Re-send Code")).isDisplayed();
 			
-			pause(7000);
+			pause(8000);
 			
 				((JavascriptExecutor)driver).executeScript("window.open()");				
 
@@ -236,17 +181,8 @@ public class CreateAdminUserTest extends TestBase{
 				      p.sendKeys(prop.getProperty("gmailPass"));//Enter Password
 				      
 				      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();//Click on Next button
-				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				      
-				    //Click on Email Subject
-				      WebElement subLnk = driver.findElement(By.xpath("//span[contains(text(),'BellesBoard Login Verification')]"));
-				      try {
-				    	  subLnk.click();
-						  } catch (Exception e) {
-						     JavascriptExecutor executor = (JavascriptExecutor) driver;
-						     executor.executeScript("arguments[0].click();", subLnk);
-						  } 
-				      
+				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);				      
+				    				      
 				      //Search Password reset email by subject
 				      WebElement sub = driver.findElement(By.xpath("//input[@name='q']"));
 				      sub.sendKeys("BellesBoard Login Verification");
@@ -254,7 +190,7 @@ public class CreateAdminUserTest extends TestBase{
 				      
 				      //Click on Search button		      
 				      sub.sendKeys(Keys.ENTER);
-				      pause(1000);
+				      pause(2000);
 				      
 				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				      WebElement vThcnt = driver.findElement(By.xpath("//div[contains(@class, 'yW')]"));
@@ -262,35 +198,16 @@ public class CreateAdminUserTest extends TestBase{
 				      System.out.println("ID of email thread: "+vid);
 				      WebElement emal = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
 				      
-				      if(driver.findElements(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).size() != 0)
-				      {
-					      String countEmail = driver.findElement(By.xpath("//div[7]//div[5]//td[4]/div[2]/span[2]")).getText();
-					      System.out.println("Number of email thread: "+countEmail);
-					      
-					      cont=Integer.parseInt(countEmail); 
-					      
-					      //WebElement eml = driver.findElement(By.xpath("//tr[1]/td[4]/div[2]/span[1]/span/span"));
-					      try {
-					    	  emal.click();
-							  } catch (Exception e) {
-							     JavascriptExecutor executor = (JavascriptExecutor) driver;
-							     executor.executeScript("arguments[0].click();", emal);
-							  } 
-					      								
-					      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
-				      }	
-				      
-				      else
-				      {
-				    	  cont = 1;
-				    	  
-				    	  JavascriptExecutor executor = (JavascriptExecutor) driver;
-						     executor.executeScript("arguments[0].click();", emal); 
-				      }
-				      WebElement vCode = driver.findElement(By.xpath("//div[contains(@class, 'a3s aiL ')]"));
-				      String vCodeid = vCode.getAttribute("id");
-				      System.out.println("ID of email thread: "+vCodeid);
-				      WebElement vCodeValue = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div["+cont+"]/div/div/div/div//div[1]/div[2]/div[3]/div[3]/div/div[1]/div[1]/table/tbody/tr/td/h2"));
+				      try {
+				    	  emal.click();
+						  } catch (Exception e) {
+						     JavascriptExecutor executor = (JavascriptExecutor) driver;
+						     executor.executeScript("arguments[0].click();", emal);
+						  } 
+				      								
+				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				     				     
+				      WebElement vCodeValue = driver.findElement(By.xpath("//html[1]/body[1]/div[7]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/table[1]/tr[1]/td[1]/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[3]/div[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/h2[1]"));
 				   				     
 				      String verificationCode = vCodeValue.getText();
 				      														 
