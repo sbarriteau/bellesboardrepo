@@ -9,7 +9,6 @@
           <include name="closeBrowser"/>
           <include name="CheckWelcomeMail"/>
           <include name="setUp"/>
-          <include name="createUserPage"/>
         </methods>
       </class> <!-- com.bellesboard.qa.testcases.CreateAdminUserTest -->
     </classes>
