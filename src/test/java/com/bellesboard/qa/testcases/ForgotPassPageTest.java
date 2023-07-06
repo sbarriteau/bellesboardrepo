@@ -66,7 +66,7 @@ public class ForgotPassPageTest extends TestBase{
 		  explicitWaitForElement("//*[@id=\"forgot_good\"]/div/div");
 		  driver.findElement(By.xpath("//*[@id=\"forgot_good\"]/div/div")).isDisplayed();
 		  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		  pause(3000);
+		  pause(5000);
 			
 	  }
 	  
