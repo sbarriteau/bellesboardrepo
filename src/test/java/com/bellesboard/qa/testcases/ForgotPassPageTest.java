@@ -20,8 +20,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 @Test(groups = {"smokeclass"})
@@ -41,17 +43,17 @@ public class ForgotPassPageTest extends TestBase{
 		super();
 	}
 	
-	@BeforeMethod
+	@BeforeClass
 	public void setUp() {
 		initialization();
-		
+		ClearGmail();
 	}
 		
 	  	
 	  @Test(groups={"smoke"}, priority = 1)
 	  public void forgotPassPage() {
 		  System.out.println("Forgot Password Page Test");
-		  ClearGmail();
+		  
 		  Assert.assertEquals(driver.getTitle(), "Login");
 		  driver.findElement(By.id("forgot")).isDisplayed();
 		  driver.findElement(By.id("forgot")).click(); //Click on Forgot Password link
@@ -74,19 +76,43 @@ public class ForgotPassPageTest extends TestBase{
 		public void CheckReseteMail() {
 		  	driver.navigate().to("https://mail.google.com/"); //Open gmail URL
 			//driver.get("https://accounts.google.com/signin");
+		  	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      //identify email
-		      WebElement l = driver.findElement(By.name("identifier"));
-		      l.sendKeys(prop.getProperty("NewUser")); //Enter email address
-		      WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
-		      b.click(); //Click on Next button
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      //identify password
-		      WebElement p = driver.findElement(By.xpath("//input[@name='Passwd']"));
-		      p.sendKeys(prop.getProperty("gmailPass"));//Enter Password
+		  		  	
+		  	List<WebElement> signoutLnk = driver.findElements(By.xpath("//div[contains(text(),'Signed out')]"));
+		       
+		  	
+		  	if(signoutLnk.size() > 0)
+		      {
+		  		driver.findElement(By.xpath("//li/div/div/div/div[2]/div")).click();		  		
+		      }
+		      else
+		      {
+		    	  WebElement l = driver.findElement(By.name("identifier"));
+		    	  l.sendKeys(prop.getProperty("NewUser")); //Enter email address
+			      WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
+			      b.click(); //Click on Next button			      
+		      }
+		  	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      
-		      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();//Click on Next button
+		  	List<WebElement> passLnk = driver.findElements(By.xpath("//input[@name='Passwd']"));
+		  	if(passLnk.size() > 0){
+		  		//identify password
+			      WebElement p = driver.findElement(By.xpath("//input[@name='Passwd']"));
+			      p.sendKeys(prop.getProperty("gmailPass"));//Enter Password
+			      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();//Click on Next button
+		  	}
+		  	else
+		  	{
+		  		//identify password
+			      WebElement pa = driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input"));
+			      pa.sendKeys(prop.getProperty("gmailPass"));//Enter Password
+			      driver.findElement(By.xpath("//span[contains(text(),'Next')]")).click();//Click on Next button
+		  	}
+		      	      
+		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		         
+		     
 		      
 		      try {
 				     driver.findElement(By.xpath("//span[contains(text(),'BellesBoard - Password Reset')]")).click();
@@ -94,7 +120,15 @@ public class ForgotPassPageTest extends TestBase{
 				     JavascriptExecutor executor = (JavascriptExecutor) driver;
 				     executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//span[contains(text(),'BellesBoard - Password Reset')]")));
 				  }  
-	    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+		      
+		      try {
+		    	  resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+		    	}
+		    	catch(org.openqa.selenium.StaleElementReferenceException ex)
+		    	{
+		    		resetPassLink = driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div[2]/div/table/tr/td/div[2]/div[2]/div/div[3]/div/div/div/div/div/div[1]/div[2]/div[3]/div[3]/div/div[2]/div[1]/table/tbody/tr/td/p[3]/a")).getAttribute("href");
+		    	}
+	    	  
 	    	  
 		      System.out.println("Reset Password link: "+resetPassLink);		    	  
 		     
@@ -136,7 +170,7 @@ public class ForgotPassPageTest extends TestBase{
 		}
 	 	  	  
 	 
-	  @AfterMethod
+	  @AfterClass
 	  public void closeBrowser() {
 		  tearDown();
 	  }

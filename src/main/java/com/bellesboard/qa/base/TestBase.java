@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
@@ -13,6 +14,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -138,18 +140,31 @@ public class TestBase {
 	      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 	      pause(1000);
-	          
-	      if(!driver.findElements(By.xpath("//div[contains(text(),'Your Primary tab is empty.')]")).isEmpty()){
-	    	  driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
-		      
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      
+	      List<WebElement> abc = driver.findElements(By.xpath("//html[1]/body[1]/div[7]/div[3]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[2]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/div[1]"));   
+	      try{
+	    	  if (abc.size() > 0 ){
+	    	   
+	    		   driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
+				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
+				      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	    	   
+	    	   }
+	    	 }catch (NoSuchElementException e){
+	    		 
+			      System.out.println("Hurray! No emails!");
+	    	 }
+	      /*
+	      if(abc.getSize() != null){
+	    	  System.out.println("Hurray! No emails!");
 	    	  
 	      }else{
-	    	  System.out.println("Hurray! No emails!");
-		      
-	      }
+	    	  driver.findElement(By.xpath("//html/body/div[7]/div[3]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div[1]/div[1]/div/div/div[1]/div/div[1]/span")).click();
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		      driver.findElement(By.xpath("//div[@data-tooltip=\"Delete\"]")).click();
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	    	  
+	    	  
+	      }*/
 	      pause(1000);
 		    
 	      try {
@@ -169,7 +184,19 @@ public class TestBase {
 		      WebElement signout=driver.findElement(By.xpath("//div[2]/span/a/span[2]/div/div"));
 		      signout.click();     
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		      driver.get(prop.getProperty("url"));	
+		      try {
+		    	  driver.get(prop.getProperty("url"));	
+		    	} catch (UnhandledAlertException f) {
+		    	    try {
+		    	        Alert alert = driver.switchTo().alert();
+		    	        String alertText = alert.getText();
+		    	        System.out.println("Alert data: " + alertText);
+		    	        alert.accept();
+		    	    } catch (NoAlertPresentException e) {
+		    	        e.printStackTrace();
+		    	    }
+		    	}
+		      
 		}
 }
 
