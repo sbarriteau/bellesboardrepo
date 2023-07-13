@@ -10,6 +10,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.testng.annotations.BeforeTest;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,6 +56,7 @@ public class CreateAdminUserTest extends TestBase{
 				  	
 	  @Test(priority = 1)
 	  public void createUserPage() {
+		  usrname = prop.getProperty("NewUser");
 		  System.out.println("Login to home Page to create new user");
 
 		  //Wait for Login
@@ -63,6 +66,37 @@ public class CreateAdminUserTest extends TestBase{
 		  driver.findElement(By.partialLinkText("Welcome")).isDisplayed();
 		  driver.findElement(By.partialLinkText("Welcome")).click();		  
 		  driver.findElement(By.xpath("//a[contains(text(),'Log Out')]")).isDisplayed();
+		  driver.findElement(By.xpath("//a[contains(text(),'Manage Users')]")).click();
+		  
+		  driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0_filter\"]/label/input")).sendKeys(usrname);
+
+		 // WebElement noUsr = driver.findElement(By.xpath("//td[contains(text(),'No matching records found')]"));
+		  List<WebElement> noUsr = driver.findElements(By.xpath("//td[contains(text(),'No matching records found')]"));
+		  if(noUsr.size() > 0)
+			{
+			  System.out.println("Create new user!");
+			  
+			  		  
+			}
+			else
+			{
+				String searchedUser = driver.findElement(By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td[1]")).getText();
+				  
+				  String expSearchedUser = "Rahul Kumar";
+				  Assert.assertEquals(searchedUser, expSearchedUser);
+				  driver.findElement(By.xpath("//td[8]/button/i")).click();
+				  
+				  WebDriverWait wait = new WebDriverWait(driver, 10);
+				  wait.until(ExpectedConditions.alertIsPresent());
+				  Alert alert = driver.switchTo().alert();
+				  System.out.println(alert.getText());
+				  alert.accept();
+				  		
+				  Alert alert1 = wait.until(ExpectedConditions.alertIsPresent());		  
+				  System.out.println(alert1.getText());
+				  alert1.accept();
+			}
+		  driver.findElement(By.partialLinkText("Welcome")).click();
 		  driver.findElement(By.xpath("//a[contains(text(),'Create User')]")).click();
 		  
 		  WebElement abilityToAccessSite = driver.findElement(By.name("siteaccess"));
@@ -82,7 +116,7 @@ public class CreateAdminUserTest extends TestBase{
 		  WebElement sendWelcomeEmail = driver.findElement(By.name("send_welcome"));
 		  Select sendWelcom = new Select(sendWelcomeEmail);		  
 		  sendWelcom.selectByValue("1");
-		  usrname = prop.getProperty("NewUser");
+		 
 		  System.out.println("New User: "+usrname);		  
 		  
 		  driver.findElement(By.name("email")).sendKeys(usrname);
@@ -111,11 +145,7 @@ public class CreateAdminUserTest extends TestBase{
 		public void CheckWelcomeMail() {
 		  	driver.navigate().to("https://mail.google.com/");
 		  	driver.findElement(By.xpath("//li/div/div/div/div[2]/div")).click();
-		      //identify email
-		     // WebElement l = driver.findElement(By.name("identifier"));
-		     // l.sendKeys(usrname);
-		     // WebElement b = driver.findElement(By.xpath("//span[contains(.,'Next')]"));
-		      //b.click();
+		     
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      //identify password
 		      pass = prop.getProperty("gmailPass");
@@ -123,18 +153,23 @@ public class CreateAdminUserTest extends TestBase{
 		      p.sendKeys(pass);
 		      
 		      driver.findElement(By.xpath("//div[@id='passwordNext']/div/button/span")).click();
-		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      pause(2000);
-		      WebElement Weleml = driver.findElement(By.xpath("//td[5]/div/div/div/span/span"));
-		     
-		      //WebElement Weleml = driver.findElement(By.xpath("//td[4]/div[2]/span[1]/span"));
+		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      
+		      WebDriverWait wait = new WebDriverWait(driver, 10);
+		      WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[5]/div/div/div/span/span")));
+		      // refreshing the page
+		      driver.navigate().refresh();
+		      		      
 		      try {
-		    	  Weleml.click();
-				  } catch (Exception e) {
-				     JavascriptExecutor executor = (JavascriptExecutor) driver;
-				     executor.executeScript("arguments[0].click();", Weleml);
-				  } 
+		    	  element.click();
+		    	}
+		    	catch(org.openqa.selenium.StaleElementReferenceException ex)
+		    	{
+		    		WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[5]/div/div/div/span/span")));
+		    		element1.click();
+		    	}
+		     
 		      		      
 		      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		      pause(2000);
